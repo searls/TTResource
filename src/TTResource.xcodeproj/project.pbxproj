@@ -95,6 +95,17 @@
 		D0DD208A10974C3900BBB778 /* NSObject+TTResource.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DD208910974C3900BBB778 /* NSObject+TTResource.m */; };
 		D0DD208B10974C3900BBB778 /* NSObject+TTResource.h in Headers */ = {isa = PBXBuildFile; fileRef = D0DD208810974C3900BBB778 /* NSObject+TTResource.h */; };
 		D0DD208C10974C3900BBB778 /* NSObject+TTResource.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DD208910974C3900BBB778 /* NSObject+TTResource.m */; };
+		D0DD20B2109758B400BBB778 /* TTResourceDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = D0DD20AF109758B400BBB778 /* TTResourceDelegate.h */; };
+		D0DD20E61097666300BBB778 /* TTResource.h in Headers */ = {isa = PBXBuildFile; fileRef = D0DD20E31097666300BBB778 /* TTResource.h */; };
+		D0DD20EC109766D700BBB778 /* TTResourceConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DD20EB109766D700BBB778 /* TTResourceConfig.m */; };
+		D0DD20ED109766D700BBB778 /* TTResourceConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = D0DD20EA109766D700BBB778 /* TTResourceConfig.h */; };
+		D0DD20EE109766D700BBB778 /* TTResourceConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DD20EB109766D700BBB778 /* TTResourceConfig.m */; };
+		D0E9285010976F1E00DF1436 /* TTResourceDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E9284F10976F1E00DF1436 /* TTResourceDispatcher.m */; };
+		D0E9285110976F1E00DF1436 /* TTResourceDispatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E9284E10976F1E00DF1436 /* TTResourceDispatcher.h */; };
+		D0E9285210976F1E00DF1436 /* TTResourceDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E9284F10976F1E00DF1436 /* TTResourceDispatcher.m */; };
+		D0E9285510976F3C00DF1436 /* TTURLRequest+TTResource.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E9285410976F3C00DF1436 /* TTURLRequest+TTResource.m */; };
+		D0E9285610976F3C00DF1436 /* TTURLRequest+TTResource.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E9285310976F3C00DF1436 /* TTURLRequest+TTResource.h */; };
+		D0E9285710976F3C00DF1436 /* TTURLRequest+TTResource.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E9285410976F3C00DF1436 /* TTURLRequest+TTResource.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -181,6 +192,14 @@
 		D0DD201B10974B6C00BBB778 /* objective_supportAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = objective_supportAppDelegate.m; path = ../vendor/objectivesupport/Classes/objective_supportAppDelegate.m; sourceTree = SOURCE_ROOT; };
 		D0DD208810974C3900BBB778 /* NSObject+TTResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+TTResource.h"; sourceTree = "<group>"; };
 		D0DD208910974C3900BBB778 /* NSObject+TTResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+TTResource.m"; sourceTree = "<group>"; };
+		D0DD20AF109758B400BBB778 /* TTResourceDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTResourceDelegate.h; sourceTree = "<group>"; };
+		D0DD20E31097666300BBB778 /* TTResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTResource.h; sourceTree = "<group>"; };
+		D0DD20EA109766D700BBB778 /* TTResourceConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTResourceConfig.h; sourceTree = "<group>"; };
+		D0DD20EB109766D700BBB778 /* TTResourceConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTResourceConfig.m; sourceTree = "<group>"; };
+		D0E9284E10976F1E00DF1436 /* TTResourceDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTResourceDispatcher.h; sourceTree = "<group>"; };
+		D0E9284F10976F1E00DF1436 /* TTResourceDispatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTResourceDispatcher.m; sourceTree = "<group>"; };
+		D0E9285310976F3C00DF1436 /* TTURLRequest+TTResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TTURLRequest+TTResource.h"; sourceTree = "<group>"; };
+		D0E9285410976F3C00DF1436 /* TTURLRequest+TTResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TTURLRequest+TTResource.m"; sourceTree = "<group>"; };
 		D2AAC07E0554694100DB518D /* libTTResource.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTTResource.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -240,8 +259,16 @@
 		08FB77AEFE84172EC02AAC07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				D0DD20E31097666300BBB778 /* TTResource.h */,
+				D0DD20EA109766D700BBB778 /* TTResourceConfig.h */,
+				D0DD20EB109766D700BBB778 /* TTResourceConfig.m */,
+				D0DD20AF109758B400BBB778 /* TTResourceDelegate.h */,
 				D0DD208810974C3900BBB778 /* NSObject+TTResource.h */,
 				D0DD208910974C3900BBB778 /* NSObject+TTResource.m */,
+				D0E9284E10976F1E00DF1436 /* TTResourceDispatcher.h */,
+				D0E9284F10976F1E00DF1436 /* TTResourceDispatcher.m */,
+				D0E9285310976F3C00DF1436 /* TTURLRequest+TTResource.h */,
+				D0E9285410976F3C00DF1436 /* TTURLRequest+TTResource.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -438,6 +465,11 @@
 				D0DD206810974B6C00BBB778 /* NSNumber+XMLSerializableSupport.h in Headers */,
 				D0DD206A10974B6C00BBB778 /* objective_supportAppDelegate.h in Headers */,
 				D0DD208B10974C3900BBB778 /* NSObject+TTResource.h in Headers */,
+				D0DD20B2109758B400BBB778 /* TTResourceDelegate.h in Headers */,
+				D0DD20E61097666300BBB778 /* TTResource.h in Headers */,
+				D0DD20ED109766D700BBB778 /* TTResourceConfig.h in Headers */,
+				D0E9285110976F1E00DF1436 /* TTResourceDispatcher.h in Headers */,
+				D0E9285610976F3C00DF1436 /* TTURLRequest+TTResource.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -572,6 +604,9 @@
 				D0DD203210974B6C00BBB778 /* NSNumber+XMLSerializableSupport.m in Sources */,
 				D0DD203310974B6C00BBB778 /* objective_supportAppDelegate.m in Sources */,
 				D0DD208A10974C3900BBB778 /* NSObject+TTResource.m in Sources */,
+				D0DD20EC109766D700BBB778 /* TTResourceConfig.m in Sources */,
+				D0E9285010976F1E00DF1436 /* TTResourceDispatcher.m in Sources */,
+				D0E9285510976F3C00DF1436 /* TTURLRequest+TTResource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -604,6 +639,9 @@
 				D0DD206910974B6C00BBB778 /* NSNumber+XMLSerializableSupport.m in Sources */,
 				D0DD206B10974B6C00BBB778 /* objective_supportAppDelegate.m in Sources */,
 				D0DD208C10974C3900BBB778 /* NSObject+TTResource.m in Sources */,
+				D0DD20EE109766D700BBB778 /* TTResourceConfig.m in Sources */,
+				D0E9285210976F1E00DF1436 /* TTResourceDispatcher.m in Sources */,
+				D0E9285710976F3C00DF1436 /* TTURLRequest+TTResource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

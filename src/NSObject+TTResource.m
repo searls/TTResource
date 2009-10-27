@@ -9,8 +9,8 @@
 //
 
 #import "NSObject+TTResource.h"
-#import "Connection.h"
-#import "Response.h"
+#import <Three20/Three20.h>
+#import "TTResourceDispatcher.h"
 #import "CoreSupport.h"
 #import "XMLSerializableSupport.h"
 #import "JSONSerializableSupport.h"
@@ -21,9 +21,12 @@ static NSString *_activeResourcePassword = nil;
 static SEL _activeResourceParseDataMethod = nil;
 static SEL _activeResourceSerializeMethod = nil;
 static NSString *_activeResourceProtocolExtension = @".xml";
-static ORSResponseFormat _format;
+static TTResponseFormat _format;
 
 @implementation NSObject (ObjectiveResource)
+
+#pragma mark -
+#pragma mark Class Methods
 
 #pragma mark configuration methods
 + (NSString *)getRemoteSite {
@@ -59,7 +62,7 @@ static ORSResponseFormat _format;
 	}
 }
 
-+ (void)setRemoteResponseType:(ORSResponseFormat) format {
++ (void)setRemoteResponseType:(TTResponseFormat) format {
 	_format = format;
 	switch (format) {
 		case JSONResponse:
@@ -75,7 +78,7 @@ static ORSResponseFormat _format;
 	}
 }
 
-+ (ORSResponseFormat)getRemoteResponseType {
++ (TTResponseFormat)getRemoteResponseType {
 	return _format;
 }
 
@@ -106,36 +109,7 @@ static ORSResponseFormat _format;
 	}
 }
 
-
-// Find all items
-//xxtodo - TTResource delegate param; return TTURLRequest
-+ (NSArray *)findAllRemoteWithResponse:(NSError **)aError {
-	Response *res = [Connection get:[self getRemoteCollectionPath] withUser:[[self class] getRemoteUser] andPassword:[[self class]  getRemotePassword]];
-	if([res isError] && aError) {
-		*aError = res.error;
-	}
-	return [self performSelector:[self getRemoteParseDataMethod] withObject:res.body];
-}
-
-//xxtodo - TTResource delegate param; return TTURLRequest+ (NSArray *)findAllRemote {
-	NSError *aError;
-	return [self findAllRemoteWithResponse:&aError];
-}
-
-//xxtodo - TTResource delegate param; return TTURLRequest
-+ (id)findRemote:(NSString *)elementId withResponse:(NSError **)aError {
-	Response *res = [Connection get:[self getRemoteElementPath:elementId] withUser:[[self class] getRemoteUser] andPassword:[[self class]  getRemotePassword]];
-	if([res isError] && aError) {
-		*aError = res.error;
-	}
-	return [self performSelector:[self getRemoteParseDataMethod] withObject:res.body];
-}
-
-//xxtodo - TTResource delegate param; return TTURLRequest
-+ (id)findRemote:(NSString *)elementId {
-	NSError *aError;
-	return [self findRemote:elementId withResponse:&aError];
-}
+#pragma mark URL Construction Accessors
 
 + (NSString *)getRemoteElementName {
 	return [[NSStringFromClass([self class]) stringByReplacingCharactersInRange:NSMakeRange(0, 1) 
@@ -168,26 +142,85 @@ static ORSResponseFormat _format;
 	return [path gsub:parameterized];
 }
 
-- (NSString *)getRemoteCollectionPath {
-	return [[self class] getRemoteCollectionPath];
+
+#pragma mark Remote Find methods
+
+// Find all items
++ (TTURLRequest *)findAllRemote {
+  return [TTResourceDispatcher get:[self getRemoteCollectionPath] 
+                          withUser:[[self class] getRemoteUser] 
+                       andPassword:[[self class]  getRemotePassword]];
 }
 
-// Converts the object to the data format expected by the server
-- (NSString *)convertToRemoteExpectedType {	  
-  return [self performSelector:[[self class] getRemoteSerializeMethod] withObject:[self excludedPropertyNames]];
+//Find one item
++ (TTURLRequest *)findRemote:(NSString *)elementId {
+	return [TTResourceDispatcher get:[self getRemoteElementPath:elementId] 
+                          withUser:[[self class] getRemoteUser] 
+                       andPassword:[[self class]  getRemotePassword]];
 }
 
+#pragma mark -
+#pragma mark Instance methods
 
-#pragma mark default equals methods for id and class based equality
-- (BOOL)isEqualToRemote:(id)anObject {
-	return 	[NSStringFromClass([self class]) isEqualToString:NSStringFromClass([anObject class])] &&
-	[anObject respondsToSelector:@selector(getRemoteId)] && [[anObject getRemoteId]isEqualToString:[self getRemoteId]];
-}
-- (NSUInteger)hashForRemote {
-	return [[self getRemoteId] intValue] + [NSStringFromClass([self class]) hash];
+
+#pragma mark Remote - Create, Update, Destroy
+
+- (TTURLRequest *)createRemote {
+	return [self createRemoteAtPath:[self getRemoteCollectionPath]];	
 }
 
-#pragma mark Instance-specific methods
+- (TTURLRequest *)createRemoteWithParameters:(NSDictionary *)parameters {
+	return [self createRemoteAtPath:[[self class] getRemoteCollectionPathWithParameters:parameters]];
+}
+
+- (TTURLRequest *)updateRemote {
+	id myId = [self getRemoteId];
+	if (nil != myId) {
+		return [self updateRemoteAtPath:[[self class] getRemoteElementPath:myId]];
+	}
+	else {
+		[[NSException exceptionWithName:@"ID Was Nil" reason:@"updateRemote sent, but object had no ID" 
+                           userInfo:nil] raise];
+    return nil; //xxtodo - why is this necessary to avert a warning?
+	}
+}
+
+- (TTURLRequest *)destroyRemote {
+	id myId = [self getRemoteId];
+	if (nil != myId) {
+		return [self destroyRemoteAtPath:[[self class] getRemoteElementPath:myId]];
+	}
+	else {
+		[[NSException exceptionWithName:@"ID Was Nil" reason:@"destroyRemote sent, but object had no ID" 
+                           userInfo:nil] raise];
+    return nil; //xxtodo - why is this necessary to avert a warning?    
+  }
+}
+
+- (TTURLRequest *)saveRemote {
+	id myId = [self getRemoteId];
+	if (nil == myId) {
+		return [self createRemote];
+	}
+	else {
+		return [self updateRemote];
+	}
+}
+
+- (TTURLRequest *)createRemoteAtPath:(NSString *)path {
+	return [TTResourceDispatcher post:[self convertToRemoteExpectedType] to:path withUser:[[self class]  getRemoteUser] andPassword:[[self class]  getRemotePassword]];
+}
+
+-(TTURLRequest *)updateRemoteAtPath:(NSString *)path {	
+  return [TTResourceDispatcher put:[self convertToRemoteExpectedType] to:path 
+                          withUser:[[self class]  getRemoteUser] andPassword:[[self class]  getRemotePassword]];	
+}
+
+- (TTURLRequest *)destroyRemoteAtPath:(NSString *)path {
+  return [TTResourceDispatcher delete:path withUser:[[self class]  getRemoteUser] andPassword:[[self class]  getRemotePassword]];
+}
+
+#pragma mark ID methods
 - (id)getRemoteId {
 	id result = nil;
 	SEL idMethodSelector = NSSelectorFromString([self getRemoteClassIdName]);
@@ -215,132 +248,59 @@ static ORSResponseFormat _format;
 	
 }
 
-//xxtodo - TTResource delegate param; return TTURLRequest
-- (BOOL)createRemoteAtPath:(NSString *)path withResponse:(NSError **)aError {
-	Response *res = [Connection post:[self convertToRemoteExpectedType] to:path withUser:[[self class]  getRemoteUser] andPassword:[[self class]  getRemotePassword]];
-	if([res isError] && aError) {
-		*aError = res.error;
-	}
-	if ([res isSuccess]) {
-		NSDictionary *newProperties = [[[self class] performSelector:[[self class] getRemoteParseDataMethod] withObject:res.body] properties];
-		[self setProperties:newProperties];
-		return YES;
-	}
-	else {
-		return NO;
-	}
+
+#pragma mark Instance helpers for getting at commonly used class-level values
+
+- (NSString *)getRemoteCollectionPath {
+	return [[self class] getRemoteCollectionPath];
 }
 
-//xxtodo - TTResource delegate param; return TTURLRequest
--(BOOL)updateRemoteAtPath:(NSString *)path withResponse:(NSError **)aError {	
-	Response *res = [Connection put:[self convertToRemoteExpectedType] to:path 
-                         withUser:[[self class]  getRemoteUser] andPassword:[[self class]  getRemotePassword]];
-	if([res isError] && aError) {
-		*aError = res.error;
-	}
-	if ([res isSuccess]) {
-		if([(NSString *)[res.headers objectForKey:@"Content-Length"] intValue] > 1) {
-			NSDictionary *newProperties = [[[self class] performSelector:[[self class] getRemoteParseDataMethod] withObject:res.body] properties];
-			[self setProperties:newProperties];
-		}
-		return YES;
-	}
-	else {
-		return NO;
-	}
-	
+// Converts the object to the data format expected by the server
+- (NSString *)convertToRemoteExpectedType {	  
+  return [self performSelector:[[self class] getRemoteSerializeMethod] withObject:[self excludedPropertyNames]];
 }
 
-//xxtodo - TTResource delegate param; return TTURLRequest
-- (BOOL)destroyRemoteAtPath:(NSString *)path withResponse:(NSError **)aError {
-	Response *res = [Connection delete:path withUser:[[self class]  getRemoteUser] andPassword:[[self class]  getRemotePassword]];
-	if([res isError] && aError) {
-		*aError = res.error;
-	}
-	return [res	isSuccess];
+#pragma mark Equality test for remote enabled objects based on class name and remote id
+
+//default equals methods for id and class based equality
+- (BOOL)isEqualToRemote:(id)anObject {
+	return 	[NSStringFromClass([self class]) isEqualToString:NSStringFromClass([anObject class])] &&
+	[anObject respondsToSelector:@selector(getRemoteId)] && [[anObject getRemoteId]isEqualToString:[self getRemoteId]];
+}
+- (NSUInteger)hashForRemote {
+	return [[self getRemoteId] intValue] + [NSStringFromClass([self class]) hash];
 }
 
-//xxtodo - TTResource delegate param; return TTURLRequest
-- (BOOL)createRemoteWithResponse:(NSError **)aError {
-	return [self createRemoteAtPath:[self getRemoteCollectionPath] withResponse:aError];	
-}
-
-//xxtodo - TTResource delegate param; return TTURLRequest
-- (BOOL)createRemote {
-	NSError *error;
-	return [self createRemoteWithResponse:&error];
-}
-
-- (BOOL)createRemoteWithParameters:(NSDictionary *)parameters andResponse:(NSError **)aError {
-	return [self createRemoteAtPath:[[self class] getRemoteCollectionPathWithParameters:parameters] withResponse:aError];
-}
-
-- (BOOL)createRemoteWithParameters:(NSDictionary *)parameters {
-	NSError *error;
-	return [self createRemoteWithParameters:parameters andResponse:&error];
-}
-
-
-- (BOOL)destroyRemoteWithResponse:(NSError **)aError {
-	id myId = [self getRemoteId];
-	if (nil != myId) {
-		return [self destroyRemoteAtPath:[[self class] getRemoteElementPath:myId] withResponse:aError];
-	}
-	else {
-		// this should return a error
-		return NO;
-	}
-}
-
-- (BOOL)destroyRemote {
-	NSError *error;
-	return [self destroyRemoteWithResponse:&error];
-}
-
-- (BOOL)updateRemoteWithResponse:(NSError **)aError {
-	id myId = [self getRemoteId];
-	if (nil != myId) {
-		return [self updateRemoteAtPath:[[self class] getRemoteElementPath:myId] withResponse:aError];
-	}
-	else {
-		// this should return an error
-		return NO;
-	}
-}
-
-- (BOOL)updateRemote {
-	NSError *error;
-	return [self updateRemoteWithResponse:&error];
-}
-
-- (BOOL)saveRemoteWithResponse:(NSError **)aError {
-	id myId = [self getRemoteId];
-	if (nil == myId) {
-		return [self createRemoteWithResponse:aError];
-	}
-	else {
-		return [self updateRemoteWithResponse:aError];
-	}
-}
-
-- (BOOL)saveRemote {
-	NSError *error;
-	return [self saveRemoteWithResponse:&error];
-}
+#pragma mark Methods for users to override
 
 /*
  Override this in your model class to extend or replace the excluded properties
  eg.
- - (NSArray *)excludedPropertyNames
- {
+ - (NSArray *)excludedPropertyNames {
  NSArray *exclusions = [NSArray arrayWithObjects:@"extraPropertyToExclude", nil];
  return [[super excludedPropertyNames] arrayByAddingObjectsFromArray:exclusions];
  }
  */
-
-- (NSArray *)excludedPropertyNames
-{
-  // exclude id , created_at , updated_at
-  return [NSArray arrayWithObjects:[self getRemoteClassIdName],@"createdAt",@"updatedAt",nil]; 
+- (NSArray *)excludedPropertyNames {
+  // exclude id , created_at , updated_at, the Three20 NSObjectAdditions category property URLValue 
+  return [NSArray arrayWithObjects:[self getRemoteClassIdName],@"createdAt",@"updatedAt",@"URLValue",nil]; 
 }
 
+//Override if some other entity needs to be delegate.
+- (id<TTResourceDelegate>)useResourceDelegate {
+  return self;
+}
+
+#pragma mark -
+#pragma mark TTResourceDelegate
+
+- (void)request:(TTURLRequest*)request completedAction:(TTResourceActionType)action onObjects:(NSArray*)objects {
+  TTLOG(@"TTResourceActionType[%d] successfull completed for objects:[%@]",action, [objects description]);  
+}
+
+- (void)request:(TTURLRequest*)request failedAction:(TTResourceActionType)action onObjects:(NSArray*)objects withError:(NSError*)error {
+  TTLOG(@"TTResourceActionType[%d] failed with error['%@'] for objects:[%@]",action, [error localizedDescription],[objects description]);
+}
+
+
+@end

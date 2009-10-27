@@ -5,20 +5,25 @@
 //  Created by vickeryj on 1/29/09.
 //  Copyright 2009 Joshua Vickery. All rights reserved.
 //  Modified by Justin Searls on 10/27/09.
-//  Copyright 2009 Justin Searls. All rights reserved.//
+//  Copyright 2009 Justin Searls. All rights reserved.
 
 #import <Foundation/Foundation.h>
+#import "TTResourceDelegate.h"
+#import <Three20/Three20.h>
 
-@interface NSObject (TTResource)
+@interface NSObject (TTResource) <TTResourceDelegate>
 
 
 // Response Formats
 typedef enum {
-	XmlResponse = 0,
-	JSONResponse,
-} ORSResponseFormat;
+	XmlResponse = 0, //xxtodo once initially ported, change to TTResponseFormatXML
+	JSONResponse, //and this to TTResponseFormatJSON
+} TTResponseFormat;
 
-// Resource configuration
+#pragma mark -
+#pragma mark Class Methods
+
+#pragma mark Configuration methods
 + (NSString *)getRemoteSite;
 + (void)setRemoteSite:(NSString*)siteURL;
 + (NSString *)getRemoteUser;
@@ -31,17 +36,10 @@ typedef enum {
 + (void) setRemoteSerializeMethod:(SEL)serializeMethod;
 + (NSString *)getRemoteProtocolExtension;
 + (void)setRemoteProtocolExtension:(NSString *)protocolExtension;
-+ (void)setRemoteResponseType:(ORSResponseFormat) format;
-+ (ORSResponseFormat)getRemoteResponseType;
++ (void)setRemoteResponseType:(TTResponseFormat) format;
++ (TTResponseFormat)getRemoteResponseType;
 
-
-// Finders
-+ (NSArray *)findAllRemote;
-+ (NSArray *)findAllRemoteWithResponse:(NSError **)aError;
-+ (id)findRemote:(NSString *)elementId;
-+ (id)findRemote:(NSString *)elementId withResponse:(NSError **)aError; 
-
-// URL construction accessors
+#pragma mark URL Construction Accessors
 + (NSString *)getRemoteElementName;
 + (NSString *)getRemoteCollectionName;
 + (NSString *)getRemoteElementPath:(NSString *)elementId;
@@ -49,34 +47,44 @@ typedef enum {
 + (NSString *)getRemoteCollectionPathWithParameters:(NSDictionary *)parameters;
 + (NSString *)populateRemotePath:(NSString *)path withParameters:(NSDictionary *)parameters;
 
-// Instance-specific methods
+//Remote - Finders
++ (TTURLRequest *)findAllRemote;
++ (TTURLRequest *)findRemote:(NSString *)elementId;
+
+#pragma mark -
+#pragma mark Instance methods
+
+#pragma mark Remote - Create, Update, Destroy
+- (TTURLRequest *)createRemote;
+- (TTURLRequest *)createRemoteWithParameters:(NSDictionary *)parameters;
+- (TTURLRequest *)updateRemote;
+- (TTURLRequest *)destroyRemote;
+- (TTURLRequest *)saveRemote;
+
+- (TTURLRequest *)createRemoteAtPath:(NSString *)path;
+- (TTURLRequest *)updateRemoteAtPath:(NSString *)path;
+- (TTURLRequest *)destroyRemoteAtPath:(NSString *)path;
+
+#pragma mark ID methods
 - (id)getRemoteId;
 - (void)setRemoteId:(id)orsId;
 - (NSString *)getRemoteClassIdName;
-- (BOOL)createRemote;
-- (BOOL)createRemoteWithResponse:(NSError **)aError;
-- (BOOL)createRemoteWithParameters:(NSDictionary *)parameters;
-- (BOOL)createRemoteWithParameters:(NSDictionary *)parameters andResponse:(NSError **)aError;
-- (BOOL)destroyRemote;
-- (BOOL)destroyRemoteWithResponse:(NSError **)aError;
-- (BOOL)updateRemote;
-- (BOOL)updateRemoteWithResponse:(NSError **)aError;
-- (BOOL)saveRemote;
-- (BOOL)saveRemoteWithResponse:(NSError **)aError;
 
-
-- (BOOL)createRemoteAtPath:(NSString *)path withResponse:(NSError **)aError;
-- (BOOL)updateRemoteAtPath:(NSString *)path withResponse:(NSError **)aError;
-- (BOOL)destroyRemoteAtPath:(NSString *)path withResponse:(NSError **)aError;
-
-// Instance helpers for getting at commonly used class-level values
+#pragma mark Instance helpers for getting at commonly used class-level values
 - (NSString *)getRemoteCollectionPath;
 - (NSString *)convertToRemoteExpectedType;
 
-//Equality test for remote enabled objects based on class name and remote id
+#pragma mark Equality test for remote enabled objects based on class name and remote id
 - (BOOL)isEqualToRemote:(id)anObject;
 - (NSUInteger)hashForRemote;
 
+#pragma mark Methods for users to override
+
+//Override to exclude specific properties from being propogated
 - (NSArray *)excludedPropertyNames;
+
+//The TTResourceDelegate is called upon the completion of any activity.
+//Override if some other entity needs to be delegate.
+- (id<TTResourceDelegate>)useResourceDelegate;
 
 @end
