@@ -1,6 +1,6 @@
 #Ignore Xcode builds
 src/build
 *.pbxuser
-*.modelv3
+*.mode1v3
 *.perspectivev3
 .DS_Store
