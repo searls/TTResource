@@ -9,20 +9,55 @@
 /* Begin PBXBuildFile section */
 		AA747D9F0F9514B9006C5449 /* TTResource_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* TTResource_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		D0A6C5591097448F00FAA706 /* libThree20.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D0A6C5561097446900FAA706 /* libThree20.a */; };
+		D0A6C55D109744BD00FAA706 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0A6C55C109744BD00FAA706 /* QuartzCore.framework */; };
+		D0A6C5741097463200FAA706 /* NSObject+TTResourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A6C5731097463200FAA706 /* NSObject+TTResourceTests.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D0A6C5551097446900FAA706 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D0A6C54E1097446900FAA706 /* Three20.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BEF31F3A0F352DF5000DE5D2;
+			remoteInfo = Three20;
+		};
+		D0A6C560109744BF00FAA706 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D0A6C54E1097446900FAA706 /* Three20.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BEF31F390F352DF5000DE5D2;
+			remoteInfo = Three20;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		AA747D9E0F9514B9006C5449 /* TTResource_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTResource_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D0A6C54E1097446900FAA706 /* Three20.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20.xcodeproj; path = ../vendor/three20/src/Three20.xcodeproj; sourceTree = SOURCE_ROOT; };
+		D0A6C55C109744BD00FAA706 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D0A6C5691097458900FAA706 /* TTResourceTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TTResourceTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0A6C56A1097458900FAA706 /* TTResourceTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TTResourceTests-Info.plist"; sourceTree = "<group>"; };
+		D0A6C5721097463200FAA706 /* NSObject+TTResourceTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+TTResourceTests.h"; sourceTree = "<group>"; };
+		D0A6C5731097463200FAA706 /* NSObject+TTResourceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+TTResourceTests.m"; sourceTree = "<group>"; };
 		D2AAC07E0554694100DB518D /* libTTResource.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTTResource.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D0A6C5661097458900FAA706 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D2AAC07C0554694100DB518D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */,
+				D0A6C5591097448F00FAA706 /* libThree20.a in Frameworks */,
+				D0A6C55D109744BD00FAA706 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -33,6 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				D2AAC07E0554694100DB518D /* libTTResource.a */,
+				D0A6C5691097458900FAA706 /* TTResourceTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -40,10 +76,14 @@
 		0867D691FE84028FC02AAC07 /* TTResource */ = {
 			isa = PBXGroup;
 			children = (
+				D0A6C54E1097446900FAA706 /* Three20.xcodeproj */,
+				D0A6C56F109745A200FAA706 /* Tests */,
 				08FB77AEFE84172EC02AAC07 /* Classes */,
 				32C88DFF0371C24200C91783 /* Other Sources */,
 				0867D69AFE84028FC02AAC07 /* Frameworks */,
 				034768DFFF38A50411DB9C8B /* Products */,
+				D0A6C55C109744BD00FAA706 /* QuartzCore.framework */,
+				D0A6C56A1097458900FAA706 /* TTResourceTests-Info.plist */,
 			);
 			name = TTResource;
 			sourceTree = "<group>";
@@ -71,6 +111,23 @@
 			name = "Other Sources";
 			sourceTree = "<group>";
 		};
+		D0A6C54F1097446900FAA706 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D0A6C5561097446900FAA706 /* libThree20.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D0A6C56F109745A200FAA706 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				D0A6C5721097463200FAA706 /* NSObject+TTResourceTests.h */,
+				D0A6C5731097463200FAA706 /* NSObject+TTResourceTests.m */,
+			);
+			name = Tests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -85,6 +142,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		D0A6C5681097458900FAA706 /* TTResourceTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D0A6C56D1097458A00FAA706 /* Build configuration list for PBXNativeTarget "TTResourceTests" */;
+			buildPhases = (
+				D0A6C5641097458900FAA706 /* Resources */,
+				D0A6C5651097458900FAA706 /* Sources */,
+				D0A6C5661097458900FAA706 /* Frameworks */,
+				D0A6C5671097458900FAA706 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TTResourceTests;
+			productName = TTResourceTests;
+			productReference = D0A6C5691097458900FAA706 /* TTResourceTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
 		D2AAC07D0554694100DB518D /* TTResource */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1DEB921E08733DC00010E9CD /* Build configuration list for PBXNativeTarget "TTResource" */;
@@ -96,6 +171,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				D0A6C561109744BF00FAA706 /* PBXTargetDependency */,
 			);
 			name = TTResource;
 			productName = TTResource;
@@ -113,14 +189,65 @@
 			mainGroup = 0867D691FE84028FC02AAC07 /* TTResource */;
 			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = D0A6C54F1097446900FAA706 /* Products */;
+					ProjectRef = D0A6C54E1097446900FAA706 /* Three20.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				D2AAC07D0554694100DB518D /* TTResource */,
+				D0A6C5681097458900FAA706 /* TTResourceTests */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		D0A6C5561097446900FAA706 /* libThree20.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libThree20.a;
+			remoteRef = D0A6C5551097446900FAA706 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D0A6C5641097458900FAA706 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D0A6C5671097458900FAA706 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		D0A6C5651097458900FAA706 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0A6C5741097463200FAA706 /* NSObject+TTResourceTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D2AAC07B0554694100DB518D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -129,6 +256,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D0A6C561109744BF00FAA706 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Three20;
+			targetProxy = D0A6C560109744BF00FAA706 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1DEB921F08733DC00010E9CD /* Debug */ = {
@@ -144,7 +279,12 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TTResource_Prefix.pch;
+				HEADER_SEARCH_PATHS = ../vendor/three20/src;
 				INSTALL_PATH = /usr/local/lib;
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PRODUCT_NAME = TTResource;
 			};
 			name = Debug;
@@ -158,7 +298,12 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TTResource_Prefix.pch;
+				HEADER_SEARCH_PATHS = ../vendor/three20/src;
 				INSTALL_PATH = /usr/local/lib;
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PRODUCT_NAME = TTResource;
 			};
 			name = Release;
@@ -190,6 +335,62 @@
 			};
 			name = Release;
 		};
+		D0A6C56B1097458A00FAA706 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INFOPLIST_FILE = "TTResourceTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					SenTestingKit,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = TTResourceTests;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		D0A6C56C1097458A00FAA706 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				INFOPLIST_FILE = "TTResourceTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					SenTestingKit,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = TTResourceTests;
+				WRAPPER_EXTENSION = octest;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -207,6 +408,15 @@
 			buildConfigurations = (
 				1DEB922308733DC00010E9CD /* Debug */,
 				1DEB922408733DC00010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D0A6C56D1097458A00FAA706 /* Build configuration list for PBXNativeTarget "TTResourceTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0A6C56B1097458A00FAA706 /* Debug */,
+				D0A6C56C1097458A00FAA706 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
