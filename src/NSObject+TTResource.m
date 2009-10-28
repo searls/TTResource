@@ -142,6 +142,13 @@ static TTResponseFormat _format;
 	return [path gsub:parameterized];
 }
 
+#pragma mark Methods for users to override
+
+//Override if, for instances, some other entity needs to be delegate.
++ (id<TTResourceDelegate>)useResourceDelegate {
+  return self;
+}
+
 
 #pragma mark Remote Find methods
 
@@ -149,14 +156,16 @@ static TTResponseFormat _format;
 + (TTURLRequest *)findAllRemote {
   return [TTResourceDispatcher get:[self getRemoteCollectionPath] 
                           withUser:[[self class] getRemoteUser] 
-                       andPassword:[[self class]  getRemotePassword]];
+                       andPassword:[[self class]  getRemotePassword] 
+                          receiver:[[self class] useResourceDelegate]];
 }
 
 //Find one item
 + (TTURLRequest *)findRemote:(NSString *)elementId {
 	return [TTResourceDispatcher get:[self getRemoteElementPath:elementId] 
                           withUser:[[self class] getRemoteUser] 
-                       andPassword:[[self class]  getRemotePassword]];
+                       andPassword:[[self class]  getRemotePassword] 
+                          receiver:[[self class] useResourceDelegate]];
 }
 
 #pragma mark -
@@ -208,16 +217,26 @@ static TTResponseFormat _format;
 }
 
 - (TTURLRequest *)createRemoteAtPath:(NSString *)path {
-	return [TTResourceDispatcher post:[self convertToRemoteExpectedType] to:path withUser:[[self class]  getRemoteUser] andPassword:[[self class]  getRemotePassword]];
+	return [TTResourceDispatcher post:[self convertToRemoteExpectedType] 
+                                 to:path 
+                           withUser:[[self class]  getRemoteUser] 
+                        andPassword:[[self class]  getRemotePassword] 
+                           receiver:[self useResourceDelegate]];
 }
 
 -(TTURLRequest *)updateRemoteAtPath:(NSString *)path {	
-  return [TTResourceDispatcher put:[self convertToRemoteExpectedType] to:path 
-                          withUser:[[self class]  getRemoteUser] andPassword:[[self class]  getRemotePassword]];	
+  return [TTResourceDispatcher put:[self convertToRemoteExpectedType] 
+                                to:path 
+                          withUser:[[self class]  getRemoteUser] 
+                       andPassword:[[self class]  getRemotePassword]
+                          receiver:[self useResourceDelegate]];	
 }
 
 - (TTURLRequest *)destroyRemoteAtPath:(NSString *)path {
-  return [TTResourceDispatcher delete:path withUser:[[self class]  getRemoteUser] andPassword:[[self class]  getRemotePassword]];
+  return [TTResourceDispatcher delete:path 
+                             withUser:[[self class]  getRemoteUser] 
+                          andPassword:[[self class]  getRemotePassword]
+                             receiver:[self useResourceDelegate]];
 }
 
 #pragma mark ID methods
@@ -286,7 +305,7 @@ static TTResponseFormat _format;
   return [NSArray arrayWithObjects:[self getRemoteClassIdName],@"createdAt",@"updatedAt",@"URLValue",nil]; 
 }
 
-//Override if some other entity needs to be delegate.
+//Override if, for instances, some other entity needs to be delegate.
 - (id<TTResourceDelegate>)useResourceDelegate {
   return self;
 }

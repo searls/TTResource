@@ -47,7 +47,10 @@ typedef enum {
 + (NSString *)getRemoteCollectionPathWithParameters:(NSDictionary *)parameters;
 + (NSString *)populateRemotePath:(NSString *)path withParameters:(NSDictionary *)parameters;
 
-//Remote - Finders
+#pragma mark Methods for users to override
++ (id<TTResourceDelegate>)useResourceDelegate;
+
+#pragma mark Remote Find methods
 + (TTURLRequest *)findAllRemote;
 + (TTURLRequest *)findRemote:(NSString *)elementId;
 

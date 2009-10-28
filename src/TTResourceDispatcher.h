@@ -12,22 +12,23 @@
 
 #import <Foundation/Foundation.h>
 #import <Three20/Three20.h>
+#import "TTResourceDelegate.h"
 
 
 @interface TTResourceDispatcher : NSObject <TTURLRequestDelegate> 
 
-+ (TTURLRequest*) post:(NSString *)body to:(NSString *)url;
-+ (TTURLRequest*) post:(NSString *)body to:(NSString *)url withUser:(NSString *)user andPassword:(NSString *)password;
++ (TTURLRequest*) post:(NSString *)body to:(NSString *)url receiver:(id)receiver delegate:(id<TTResourceDelegate>)delegate;
++ (TTURLRequest*) post:(NSString *)body to:(NSString *)url withUser:(NSString *)user andPassword:(NSString *)password receiver:(id)receiver delegate:(id<TTResourceDelegate>)delegate;
 
-+ (TTURLRequest*) get:(NSString *)url withUser:(NSString *)user andPassword:(NSString *)password;
-+ (TTURLRequest*) get:(NSString *)url;
++ (TTURLRequest*) get:(NSString *)url withUser:(NSString *)user andPassword:(NSString *)password receiver:(id)receiver delegate:(id<TTResourceDelegate>)delegate;
++ (TTURLRequest*) get:(NSString *)url receiver:(id)receiver delegate:(id<TTResourceDelegate>)delegate;
 
-+ (TTURLRequest*) put:(NSString *)body to:(NSString *)url withUser:(NSString *)user andPassword:(NSString *)password;
++ (TTURLRequest*) put:(NSString *)body to:(NSString *)url withUser:(NSString *)user andPassword:(NSString *)password receiver:(id)receiver delegate:(id<TTResourceDelegate>)delegate;
 
-+ (TTURLRequest*) delete:(NSString *)url withUser:(NSString *)user andPassword:(NSString *)password;
++ (TTURLRequest*) delete:(NSString *)url withUser:(NSString *)user andPassword:(NSString *)password receiver:(id)receiver delegate:(id<TTResourceDelegate>)delegate;
 
-//xxtodo - Verify, but this probably isn't necessary. New to Three20 and want this? 
-//          Check out TTURLRequestQueue
+//This probably isn't necessary. New to Three20 and want this functionality? 
+//          Check out TTURLRequestQueue's cancel and pause functions
 //+ (void) cancelAllActiveConnections; //xxtodo - Necessary?
 
 @end

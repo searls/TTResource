@@ -11,11 +11,15 @@
 #import "TTResourceDispatcher.h"
 #import "Three20/Three20.h"
 #import "NSData+Additions.h"
+#import "NSObject+TTResource.h"
+#import "NSObject+PropertySupport.h"
 
 @interface TTResourceDispatcher()
 
 + (void)sendRequest:(TTURLRequest *)request withUser:(NSString *)user andPassword:(NSString *)password;
-+ (TTURLRequest *)sendBy:(NSString *)method withBody:(NSString *)body to:(NSString *)url withUser:(NSString *)user andPassword:(NSString *)password;
++ (TTURLRequest *)sendBy:(NSString *)method withBody:(NSString *)body to:(NSString *)url 
+                withUser:(NSString *)user andPassword:(NSString *)password receiver:(id)receiver 
+                delegate:(id<TTResourceDelegate>)delegate;
 
 + (NSString*)urlContainingAuthString:(NSString*)authString forUrl:(NSString*)url;
 
@@ -27,28 +31,28 @@
 #pragma mark -
 #pragma mark Public Methods
 
-+ (TTURLRequest *)post:(NSString *)body to:(NSString *)url {
-	return [self post:body to:url withUser:nil andPassword:nil];
++ (TTURLRequest *)post:(NSString *)body to:(NSString *)url receiver:(id)receiver delegate:(id<TTResourceDelegate>)delegate{
+	return [self post:body to:url withUser:nil andPassword:nil receiver:receiver delegate:delegate];
 }
 
-+ (TTURLRequest *)post:(NSString *)body to:(NSString *)url withUser:(NSString *)user andPassword:(NSString *)password{
-	return [self sendBy:@"POST" withBody:body to:url withUser:user andPassword:password];
++ (TTURLRequest *)post:(NSString *)body to:(NSString *)url withUser:(NSString *)user andPassword:(NSString *)password receiver:(id)receiver delegate:(id<TTResourceDelegate>)delegate{
+	return [self sendBy:@"POST" withBody:body to:url withUser:user andPassword:password receiver:receiver delegate:delegate];
 }
 
-+ (TTURLRequest *)put:(NSString *)body to:(NSString *)url withUser:(NSString *)user andPassword:(NSString *)password{
-	return [self sendBy:@"PUT" withBody:body to:url withUser:user andPassword:password];
++ (TTURLRequest *)put:(NSString *)body to:(NSString *)url withUser:(NSString *)user andPassword:(NSString *)password receiver:(id)receiver delegate:(id<TTResourceDelegate>)delegate{
+	return [self sendBy:@"PUT" withBody:body to:url withUser:user andPassword:password receiver:receiver delegate:delegate];
 }
 
-+ (TTURLRequest *)get:(NSString *)url {
-	return [self get:url withUser:nil andPassword:nil];
++ (TTURLRequest *)get:(NSString *)url receiver:(id)receiver delegate:(id<TTResourceDelegate>)delegate{
+	return [self get:url withUser:nil andPassword:nil receiver:receiver delegate:delegate];
 }
 
-+ (TTURLRequest *)get:(NSString *)url withUser:(NSString *)user andPassword:(NSString *)password {  
-  return [self sendBy:@"GET" withBody:nil to:url withUser:user andPassword:password];
++ (TTURLRequest *)get:(NSString *)url withUser:(NSString *)user andPassword:(NSString *)password receiver:(id)receiver delegate:(id<TTResourceDelegate>)delegate{
+  return [self sendBy:@"GET" withBody:nil to:url withUser:user andPassword:password receiver:receiver delegate:delegate];
 }
 
-+ (TTURLRequest *)delete:(NSString *)url withUser:(NSString *)user andPassword:(NSString *)password {
-  return [self sendBy:@"DELETE" withBody:nil to:url withUser:user andPassword:password];
++ (TTURLRequest *)delete:(NSString *)url withUser:(NSString *)user andPassword:(NSString *)password receiver:(id)receiver delegate:(id<TTResourceDelegate>)delegate{
+  return [self sendBy:@"DELETE" withBody:nil to:url withUser:user andPassword:password receiver:receiver delegate:delegate];
 }
 
 #pragma mark -
@@ -59,38 +63,42 @@
  *
  * If the request is served from the cache, this is the only delegate method that will be called.
  */
-- (void)requestDidFinishLoad:(TTURLRequest*)request {
- /* Replace this gunk.
-  Response *resp = [Response responseFrom:(NSHTTPURLResponse *)connectionDelegate.response 
-                                 withBody:connectionDelegate.data 
-                                 andError:connectionDelegate.error];
-  */
+- (void)requestDidFinishLoad:(TTURLRequest*)request {  
+  NSObject<TTResourceDelegate> *delegate = [(TTUserInfo*)request.userInfo strong];
+  id receiver = [(TTUserInfo*)request.userInfo weak];
+  NSData *body = [(TTURLDataResponse*)request.response data];
   
-  /* And do so elegantly for each of these methods that call the dispatcher:
-   
-   Find Remote & Find All Remote [+ (TTURLRequest *)findRemote:(NSString *)elementId] & [+ (TTURLRequest *)findAllRemote]
-    [self performSelector:[self getRemoteParseDataMethod] withObject:res.body]
-   
-   Create remote at path [- (TTURLRequest *)createRemoteAtPath:(NSString *)path]
-     NSDictionary *newProperties = [[[self class] performSelector:[[self class] getRemoteParseDataMethod] withObject:res.body] properties];
-     [self setProperties:newProperties];
-     return YES;
-   
-   Update remote at path [-(TTURLRequest *)updateRemoteAtPath:(NSString *)path]
-     if([(NSString *)[res.headers objectForKey:@"Content-Length"] intValue] > 1) {
-     NSDictionary *newProperties = [[[self class] performSelector:[[self class] getRemoteParseDataMethod] withObject:res.body] properties];
-     [self setProperties:newProperties];
-     }
-   
-   Destroy [-(TTURLRequest *)destroyRemoteAtPath:(NSString *)path]
-      //do nothing
-   
-   
-   
-   */
-   
-   
+  if(!receiver) {
+    //xxtodo - Now what? Throw an error? Freak out
+    TTLOG(@"No receiver (expected to adhere to TTResourceDelegate)");
+    return;
+  }
+  
+  if([request.httpMethod isEqualToString:@"GET"]) { //Find    
 
+    [receiver performSelector:[receiver getRemoteParseDataMethod]
+               withObject:body];
+    //xxtodo - call appropriate delegate method
+    //xxtodo - Write a bunch of tests for this delegate call; the finder methods are class methods so we know the
+    //          TTResourceDelegate is really a class.    
+  } else if([request.httpMethod isEqualToString:@"POST"]) { //Create
+    NSDictionary *newProperties = [[[receiver class] 
+                                    performSelector:[[receiver class] getRemoteParseDataMethod] 
+                                    withObject:body] properties];
+    [receiver setProperties:newProperties];
+    //xxtodo - call appropriate delegate method    
+  } else if([request.httpMethod isEqualToString:@"PUT"]) { //Update 
+    if([(NSString *)[request.headers objectForKey:@"Content-Length"] intValue] > 1) {
+      NSDictionary *newProperties = [[[receiver class] performSelector:[[receiver class] getRemoteParseDataMethod] 
+                                                            withObject:body] properties];
+      [self setProperties:newProperties];
+    }    
+    //xxtodo - call appropriate delegate method    
+  } else if([request.httpMethod isEqualToString:@"DELETE"]) { //Destroy
+    //xxtodo - call appropriate delegate method    
+  } else {
+    //This shouldn't happen; xxtodo - raise exception
+  }
 }
 
 - (void)request:(TTURLRequest*)request didFailLoadWithError:(NSError*)error {
@@ -116,15 +124,16 @@
   //2. Create a Data Response Object
   request.response = [[[TTURLDataResponse alloc] init] autorelease];  
   
-  //3. xxtodo - will need to add a userinfo object that identifies which type of request we're processing. It could store the selector for all I care.
-  
 
-  //4. Send
+  //3. Send
   [request send];
 }
 
 
-+ (TTURLRequest *)sendBy:(NSString *)method withBody:(NSString *)body to:(NSString *)url withUser:(NSString *)user andPassword:(NSString *)password {
++ (TTURLRequest *)sendBy:(NSString *)method withBody:(NSString *)body to:(NSString *)url 
+                withUser:(NSString *)user andPassword:(NSString *)password 
+                receiver:(id)receiver 
+                delegate:(id<TTResourceDelegate>)delegate{
   TTURLRequest *request = [TTURLRequest requestWithURL:url delegate:self];
   request.httpMethod = method;
   if(body) {
@@ -132,6 +141,8 @@
   }
   
   [self sendRequest:request withUser:user andPassword:password];
+  
+  request.userInfo = [TTUserInfo topic:method strong:delegate weak:receiver];
   
 	return request;
 }
