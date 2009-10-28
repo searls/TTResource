@@ -1,7 +1,7 @@
 TTResource
 ==========
 
-Intro
+Overview
 --------
 
 TTResource sets out to solve the following dilemma: you (an iPhone application developer) are using either [ObjectiveResource](http://github.com/yfactorial/objectiveresource) or [Three20](http://github.com/joehewitt/three20) but you want to *also* use the other one. On its face, that isn't an unreasonable desire--after all, they seem to be accomplishing wholly different objectives:
@@ -9,15 +9,22 @@ TTResource sets out to solve the following dilemma: you (an iPhone application d
 * ObjectiveResource sets out to handle automatic marshalling and unmarshalling of model objects that are backed in the cloud by RESTful services provided by Ruby on Rails
 * Three20, meanwhile, provides some nifty views and controls, convenient extensions to UIKit, a novel CSS-like styling engine, and a means of intra-app navigation using URLs. (I gave a presentation summing up these four points: [slides](http://is.gd/4Fd7f))
 
-Right, So What's the Problem?
------------------------------
+**Right, So What's the Problem?**
 
-The problem is that ObjectiveResource and Three20 don't play particularly well together.
+The problem is that ObjectiveResource and Three20 don't always play particularly well together. Neither thematically nor technically.
 
 * ObjectiveResource's API was designed to handle all URL requests synchronously, while Three20's view controllers, TTModel, and TTURLRequest facilities were designed to *encourage* getting remote data loading out of the way of the main UI thread. 
 * As such, classes using ObjectiveResource to connect to a Rails backend are put at a disadvantage in the context of a Three20 app. They can't benefit from the on-disk caching or request queue management offered by Three20's TTURLRequest and TTURLRequestQueue.
-* Additionally, Three20's included implementations of TTModel, which can keep a view controller quite abreast of the status/readiness of the data model (e.g. loading, out of date, ready, etc.), rely on using the TTURLRequest class to make requests. More fundamentally, the TTModel protocol itself doesn't make very much sense when all requests take place synchronously on the main thread (though, in fairness to ObjectiveResource, there's a somewhat terse [workaround](http://groups.google.com/group/objectiveresource/browse_thread/thread/73370fd4f28e43eb/6af4489aa538db82?lnk=gst&q=asynchronous#6af4489aa538db82) for that).
-* There are a couple minor bugs/hiccups to experience when first bringing together the two libraries into a single application.
+* Additionally, Three20's included implementations of TTModel (like TTURLRequestModel), which can keep a view controller quite abreast of the status/readiness of the data model (e.g. loading, out of date, ready, etc.), rely on using the TTURLRequest class to make requests. More fundamentally, the TTModel protocol itself doesn't make very much sense when all requests take place synchronously on the main thread (though, in fairness to ObjectiveResource, there's a somewhat terse [workaround](http://groups.google.com/group/objectiveresource/browse_thread/thread/73370fd4f28e43eb/6af4489aa538db82?lnk=gst&q=asynchronous#6af4489aa538db82) for that).
+* There are a couple minor bugs/hiccups to experience when first bringing together the two libraries into a single application ([example](http://github.com/joehewitt/three20/issues#issue/95)).
+
+**And how is TTResource the solution?**
+
+First, a note: kudos to the folks that wrote ObjectiveResource, because they were smart enough to modularize almost all the code that does the real heavy lifting--the utilities to de/serialize and service objects impacted by RESTful service invocations--into a separate library called [ObjectiveSupport](http://github.com/yfactorial/objectivesupport). ObjectiveResource itself is actually pretty lightweight and cohesive. 
+
+Because ObjectiveResource is so lightweight, it actually didn't take long to realize that the most effective approach would be to re-implement it entirely, as if it had been written as part of a Three20 application from the start. So there you have it: what's called TTResource is essentially an ObjectiveResource rewrite. Like ObjectiveResource, it still depends on classes provided by ObjectiveSupport to do almost all of the hard stuff. And like a Three20 application, it still depends on classes provided by Three20 to do most of the hard stuff. TTResource, therefore, is just a little bit of other (presumably easy?) stuff to bridge the gap between them. 
+
+Last, another note: since TTResource itself borrows code directly from ObjectiveResource where it made sense to reuse it, I've attributed Y Factorial on each applicable copyright notice in the source and on the license file.
 
 Adding TTResource to your project
 ---------------------------------
