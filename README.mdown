@@ -1,0 +1,48 @@
+TTResource
+==========
+
+Intro
+--------
+
+TTResource sets out to solve the following dilemma: you (an iPhone application developer) are using either [ObjectiveResource](http://github.com/yfactorial/objectiveresource) or [Three20](http://github.com/joehewitt/three20) but you want to *also* use the other one. On its face, that isn't an unreasonable desire--after all, they seem to be accomplishing wholly different objectives:
+
+* ObjectiveResource sets out to handle automatic marshalling and unmarshalling of model objects that are backed in the cloud by RESTful services provided by Ruby on Rails
+* Three20, meanwhile, provides some nifty views and controls, convenient extensions to UIKit, a novel CSS-like styling engine, and a means of intra-app navigation using URLs. (I gave a presentation summing up these four points: [slides](http://is.gd/4Fd7f))
+
+Right, So What's the Problem?
+-----------------------------
+
+The problem is that ObjectiveResource and Three20 don't play particularly well together.
+
+* ObjectiveResource's API was designed to handle all URL requests synchronously, while Three20's view controllers, TTModel, and TTURLRequest facilities were designed to *encourage* getting remote data loading out of the way of the main UI thread. 
+* As such, classes using ObjectiveResource to connect to a Rails backend are put at a disadvantage in the context of a Three20 app. They can't benefit from the on-disk caching or request queue management offered by Three20's TTURLRequest and TTURLRequestQueue.
+* Additionally, Three20's included implementations of TTModel, which can keep a view controller quite abreast of the status/readiness of the data model (e.g. loading, out of date, ready, etc.), rely on using the TTURLRequest class to make requests. More fundamentally, the TTModel protocol itself doesn't make very much sense when all requests take place synchronously on the main thread (though, in fairness to ObjectiveResource, there's a somewhat terse [workaround](http://groups.google.com/group/objectiveresource/browse_thread/thread/73370fd4f28e43eb/6af4489aa538db82?lnk=gst&q=asynchronous#6af4489aa538db82) for that).
+* There are a couple minor bugs/hiccups to experience when first bringing together the two libraries into a single application.
+
+Adding TTResource to your project
+---------------------------------
+
+**Note: TTResource is pre-pre-pre-Alpha. It does not work. Do not add TTResource to your existing applications just yet.**
+
+1. Clone the TTResource repository to a permanent location on your hard drive:
+<pre>
+    $ git clone git://github.com/searls/TTResource.git
+</pre>
+2. Find `TTResource.xcodeproj` in Finder, then drag-and-drop it into your project's "Groups & Files" pane in Xcode underneath your Project.
+	* Uncheck "Copy items"
+	* Set "Reference Type" to "Relative to Project"
+	* Check "Recursively create groups for any added folders"	
+3. Click "TTResource.xcodeproj" in your "Groups & Files" pane, and in the upper right, you should see a file named "libTTResource.a". Check the checkbox to the far right with a bullseye above it.
+4. Set up the project's dependencies.
+	1. From the menu bar, select "Project" -> "Edit Project Settings" and click the "General" tab.
+	2. Click the `+` icon under "Direct Dependencies" and add `TTResource`.
+	3. Click the `+` icon under "Linked Libraries" and add `libxml2.dylib`.
+5. Set up the project settings
+	1. From the menu bar, select "Project" -> "Edit Project Settings" and click the "Build" tab. 
+	2. Set Configuration to `All Configurations` 
+	3. Under "Other Linker Flags" add both: `-all_load` and `-ObjC`
+	4. Under "Header Search Paths", add the relative path from your XCode project to the TTResource source files. If your project and TTResource shared the same root folder, this would be "../TTResource/src"
+
+Usage Example
+-------------
+**TODO**
