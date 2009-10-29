@@ -157,7 +157,8 @@ static TTResponseFormat _format;
   return [TTResourceDispatcher get:[self getRemoteCollectionPath] 
                           withUser:[[self class] getRemoteUser] 
                        andPassword:[[self class]  getRemotePassword] 
-                          receiver:[[self class] useResourceDelegate]];
+                          receiver:self 
+                          delegate:[self useResourceDelegate]];
 }
 
 //Find one item
@@ -165,7 +166,8 @@ static TTResponseFormat _format;
 	return [TTResourceDispatcher get:[self getRemoteElementPath:elementId] 
                           withUser:[[self class] getRemoteUser] 
                        andPassword:[[self class]  getRemotePassword] 
-                          receiver:[[self class] useResourceDelegate]];
+                          receiver:self 
+                          delegate:[self useResourceDelegate]];
 }
 
 #pragma mark -
@@ -221,7 +223,8 @@ static TTResponseFormat _format;
                                  to:path 
                            withUser:[[self class]  getRemoteUser] 
                         andPassword:[[self class]  getRemotePassword] 
-                           receiver:[self useResourceDelegate]];
+                           receiver:self 
+                           delegate:[self useResourceDelegate]];
 }
 
 -(TTURLRequest *)updateRemoteAtPath:(NSString *)path {	
@@ -229,14 +232,16 @@ static TTResponseFormat _format;
                                 to:path 
                           withUser:[[self class]  getRemoteUser] 
                        andPassword:[[self class]  getRemotePassword]
-                          receiver:[self useResourceDelegate]];	
+                          receiver:self 
+                          delegate:[self useResourceDelegate]];	
 }
 
 - (TTURLRequest *)destroyRemoteAtPath:(NSString *)path {
   return [TTResourceDispatcher delete:path 
                              withUser:[[self class]  getRemoteUser] 
                           andPassword:[[self class]  getRemotePassword]
-                             receiver:[self useResourceDelegate]];
+                             receiver:self 
+                             delegate:[self useResourceDelegate]];
 }
 
 #pragma mark ID methods
@@ -313,13 +318,14 @@ static TTResponseFormat _format;
 #pragma mark -
 #pragma mark TTResourceDelegate
 
-- (void)request:(TTURLRequest*)request completedAction:(TTResourceActionType)action onObjects:(NSArray*)objects {
-  TTLOG(@"TTResourceActionType[%d] successfull completed for objects:[%@]",action, [objects description]);  
-}
+//xxtodo - provide a default implementation for this, at least TTLOG the results.
++ (void)foundObjects:(NSArray*)objects forRequest:(TTURLRequest*)request{}
 
-- (void)request:(TTURLRequest*)request failedAction:(TTResourceActionType)action onObjects:(NSArray*)objects withError:(NSError*)error {
-  TTLOG(@"TTResourceActionType[%d] failed with error['%@'] for objects:[%@]",action, [error localizedDescription],[objects description]);
-}
+- (void)createdObject:(id)object forRequest:(TTURLRequest*)request{}
+- (void)updatedObject:(id)object forRequest:(TTURLRequest*)request{}
+- (void)destroyedObject:(id)object forRequest:(TTURLRequest*)request{}
+
+- (void)requestFailed:(TTURLRequest*)request withError:(NSError*)error{}
 
 
 @end

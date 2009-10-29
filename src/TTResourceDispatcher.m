@@ -9,6 +9,7 @@
 //
 
 #import "TTResourceDispatcher.h"
+#import "TTResourceConfig.h"
 #import "Three20/Three20.h"
 #import "NSData+Additions.h"
 #import "NSObject+TTResource.h"
@@ -75,7 +76,7 @@
   }
   
   if([request.httpMethod isEqualToString:@"GET"]) { //Find    
-
+    //xxtodo - no way to tell here if they want one or all..
     [receiver performSelector:[receiver getRemoteParseDataMethod]
                withObject:body];
     //xxtodo - call appropriate delegate method
@@ -102,8 +103,7 @@
 }
 
 - (void)request:(TTURLRequest*)request didFailLoadWithError:(NSError*)error {
-  //xxtodo - oops, we lost the reference to the calling object, so we don't have a delegate
-  //            to phone home to. We'll have to wire that into the methods above.
+  //xxtodo call failure delegate method (include action type in failure?)
 }
 
 
@@ -119,6 +119,18 @@
     request.URL = [TTResourceDispatcher urlContainingAuthString:authString forUrl:request.URL];
     [request.headers setObject:[[authString dataUsingEncoding:NSUTF8StringEncoding] base64Encoding] 
                         forKey:@"Authorization"];
+	}
+  
+  //2. Set MIME type for Content-Type and Accept headers
+  switch ([TTResourceConfig getResponseType]) {
+		case JSONResponse:
+      [request.headers setObject:@"application/json" forKey:@"Content-Type"];	
+      [request.headers setObject:@"application/json" forKey:@"Accept"];	      
+			break;
+		default:
+      [request.headers setObject:@"application/xml" forKey:@"Content-Type"];	
+      [request.headers setObject:@"application/xml" forKey:@"Accept"];	      
+			break;
 	}
   
   //2. Create a Data Response Object

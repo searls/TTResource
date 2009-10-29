@@ -260,9 +260,9 @@
 			isa = PBXGroup;
 			children = (
 				D0DD20E31097666300BBB778 /* TTResource.h */,
+				D0DD20AF109758B400BBB778 /* TTResourceDelegate.h */,
 				D0DD20EA109766D700BBB778 /* TTResourceConfig.h */,
 				D0DD20EB109766D700BBB778 /* TTResourceConfig.m */,
-				D0DD20AF109758B400BBB778 /* TTResourceDelegate.h */,
 				D0DD208810974C3900BBB778 /* NSObject+TTResource.h */,
 				D0DD208910974C3900BBB778 /* NSObject+TTResource.m */,
 				D0E9284E10976F1E00DF1436 /* TTResourceDispatcher.h */,
