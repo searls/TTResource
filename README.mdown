@@ -43,7 +43,6 @@ Adding TTResource to your project
 4. Set up the project's dependencies.
 	1. From the menu bar, select "Project" -> "Edit Project Settings" and click the "General" tab.
 	2. Click the `+` icon under "Direct Dependencies" and add `TTResource`.
-	3. Click the `+` icon under "Linked Libraries" and add `libxml2.dylib`.
 5. Set up the project settings
 	1. From the menu bar, select "Project" -> "Edit Project Settings" and click the "Build" tab. 
 	2. Set Configuration to `All Configurations` 
