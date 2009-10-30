@@ -146,6 +146,7 @@ static TTResponseFormat _format;
 
 //Override if, for instances, some other entity needs to be delegate.
 + (id<TTResourceDelegate>)useResourceDelegate {
+  TTLOG(@"called class version of useResourceDelegate");
   return self;
 }
 
@@ -312,6 +313,7 @@ static TTResponseFormat _format;
 
 //Override if, for instances, some other entity needs to be delegate.
 - (id<TTResourceDelegate>)useResourceDelegate {
+  TTLOG(@"called instance version of useResourceDelegate");
   return self;
 }
 
