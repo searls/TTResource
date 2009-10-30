@@ -9,33 +9,9 @@
 /* Begin PBXBuildFile section */
 		AA747D9F0F9514B9006C5449 /* TTResource_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* TTResource_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		D066BDB9109A83020091E15A /* NSObject+TTResourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A6C5731097463200FAA706 /* NSObject+TTResourceTests.m */; };
 		D0A6C5591097448F00FAA706 /* libThree20.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D0A6C5561097446900FAA706 /* libThree20.a */; };
 		D0A6C55D109744BD00FAA706 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0A6C55C109744BD00FAA706 /* QuartzCore.framework */; };
-		D0A6C5741097463200FAA706 /* NSObject+TTResourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A6C5731097463200FAA706 /* NSObject+TTResourceTests.m */; };
-		D0DD201C10974B6C00BBB778 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DD1FE110974B6C00BBB778 /* NSObject+SBJSON.m */; };
-		D0DD201D10974B6C00BBB778 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DD1FE310974B6C00BBB778 /* NSString+SBJSON.m */; };
-		D0DD201E10974B6C00BBB778 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DD1FE510974B6C00BBB778 /* SBJSON.m */; };
-		D0DD201F10974B6C00BBB778 /* NSString+InflectionSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DD1FEA10974B6C00BBB778 /* NSString+InflectionSupport.m */; };
-		D0DD202010974B6C00BBB778 /* NSData+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DD1FEC10974B6C00BBB778 /* NSData+Additions.m */; };
-		D0DD202110974B6C00BBB778 /* NSObject+PropertySupport.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DD1FEE10974B6C00BBB778 /* NSObject+PropertySupport.m */; };
-		D0DD202210974B6C00BBB778 /* NSString+GSub.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DD1FF010974B6C00BBB778 /* NSString+GSub.m */; };
-		D0DD202310974B6C00BBB778 /* ObjectiveResourceDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DD1FF210974B6C00BBB778 /* ObjectiveResourceDateFormatter.m */; };
-		D0DD202410974B6C00BBB778 /* NSArray+JSONSerializableSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DD1FF710974B6C00BBB778 /* NSArray+JSONSerializableSupport.m */; };
-		D0DD202510974B6C00BBB778 /* NSDictionary+JSONSerializableSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DD1FFB10974B6C00BBB778 /* NSDictionary+JSONSerializableSupport.m */; };
-		D0DD202610974B6C00BBB778 /* NSObject+JSONSerializableSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DD1FFD10974B6C00BBB778 /* NSObject+JSONSerializableSupport.m */; };
-		D0DD202710974B6C00BBB778 /* NSDate+Serialize.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DD1FFF10974B6C00BBB778 /* NSDate+Serialize.m */; };
-		D0DD202810974B6C00BBB778 /* NSDictionary+KeyTranslation.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DD200110974B6C00BBB778 /* NSDictionary+KeyTranslation.m */; };
-		D0DD202910974B6C00BBB778 /* NSObject+Serialize.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DD200310974B6C00BBB778 /* NSObject+Serialize.m */; };
-		D0DD202A10974B6C00BBB778 /* NSString+Serialize.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DD200510974B6C00BBB778 /* NSString+Serialize.m */; };
-		D0DD202B10974B6C00BBB778 /* FromXMLElementDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DD200910974B6C00BBB778 /* FromXMLElementDelegate.m */; };
-		D0DD202C10974B6C00BBB778 /* NSArray+XMLSerializableSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DD200B10974B6C00BBB778 /* NSArray+XMLSerializableSupport.m */; };
-		D0DD202D10974B6C00BBB778 /* NSDate+XMLSerializableSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DD200D10974B6C00BBB778 /* NSDate+XMLSerializableSupport.m */; };
-		D0DD202E10974B6C00BBB778 /* NSDictionary+XMLSerializableSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DD200F10974B6C00BBB778 /* NSDictionary+XMLSerializableSupport.m */; };
-		D0DD202F10974B6C00BBB778 /* NSNull+XMLSerializableSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DD201110974B6C00BBB778 /* NSNull+XMLSerializableSupport.m */; };
-		D0DD203010974B6C00BBB778 /* NSObject+XMLSerializableSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DD201310974B6C00BBB778 /* NSObject+XMLSerializableSupport.m */; };
-		D0DD203110974B6C00BBB778 /* NSString+XMLSerializableSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DD201510974B6C00BBB778 /* NSString+XMLSerializableSupport.m */; };
-		D0DD203210974B6C00BBB778 /* NSNumber+XMLSerializableSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DD201910974B6C00BBB778 /* NSNumber+XMLSerializableSupport.m */; };
-		D0DD203310974B6C00BBB778 /* objective_supportAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DD201B10974B6C00BBB778 /* objective_supportAppDelegate.m */; };
 		D0DD203410974B6C00BBB778 /* JSONFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = D0DD1FDF10974B6C00BBB778 /* JSONFramework.h */; };
 		D0DD203510974B6C00BBB778 /* NSObject+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D0DD1FE010974B6C00BBB778 /* NSObject+SBJSON.h */; };
 		D0DD203610974B6C00BBB778 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DD1FE110974B6C00BBB778 /* NSObject+SBJSON.m */; };
@@ -92,18 +68,14 @@
 		D0DD206910974B6C00BBB778 /* NSNumber+XMLSerializableSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DD201910974B6C00BBB778 /* NSNumber+XMLSerializableSupport.m */; };
 		D0DD206A10974B6C00BBB778 /* objective_supportAppDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = D0DD201A10974B6C00BBB778 /* objective_supportAppDelegate.h */; };
 		D0DD206B10974B6C00BBB778 /* objective_supportAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DD201B10974B6C00BBB778 /* objective_supportAppDelegate.m */; };
-		D0DD208A10974C3900BBB778 /* NSObject+TTResource.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DD208910974C3900BBB778 /* NSObject+TTResource.m */; };
 		D0DD208B10974C3900BBB778 /* NSObject+TTResource.h in Headers */ = {isa = PBXBuildFile; fileRef = D0DD208810974C3900BBB778 /* NSObject+TTResource.h */; };
 		D0DD208C10974C3900BBB778 /* NSObject+TTResource.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DD208910974C3900BBB778 /* NSObject+TTResource.m */; };
 		D0DD20B2109758B400BBB778 /* TTResourceDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = D0DD20AF109758B400BBB778 /* TTResourceDelegate.h */; };
 		D0DD20E61097666300BBB778 /* TTResource.h in Headers */ = {isa = PBXBuildFile; fileRef = D0DD20E31097666300BBB778 /* TTResource.h */; };
-		D0DD20EC109766D700BBB778 /* TTResourceConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DD20EB109766D700BBB778 /* TTResourceConfig.m */; };
 		D0DD20ED109766D700BBB778 /* TTResourceConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = D0DD20EA109766D700BBB778 /* TTResourceConfig.h */; };
 		D0DD20EE109766D700BBB778 /* TTResourceConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DD20EB109766D700BBB778 /* TTResourceConfig.m */; };
-		D0E9285010976F1E00DF1436 /* TTResourceDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E9284F10976F1E00DF1436 /* TTResourceDispatcher.m */; };
 		D0E9285110976F1E00DF1436 /* TTResourceDispatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E9284E10976F1E00DF1436 /* TTResourceDispatcher.h */; };
 		D0E9285210976F1E00DF1436 /* TTResourceDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E9284F10976F1E00DF1436 /* TTResourceDispatcher.m */; };
-		D0E9285510976F3C00DF1436 /* TTURLRequest+TTResource.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E9285410976F3C00DF1436 /* TTURLRequest+TTResource.m */; };
 		D0E9285610976F3C00DF1436 /* TTURLRequest+TTResource.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E9285310976F3C00DF1436 /* TTURLRequest+TTResource.h */; };
 		D0E9285710976F3C00DF1436 /* TTURLRequest+TTResource.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E9285410976F3C00DF1436 /* TTURLRequest+TTResource.m */; };
 /* End PBXBuildFile section */
@@ -129,9 +101,10 @@
 		AA747D9E0F9514B9006C5449 /* TTResource_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTResource_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D042C557109A7F840002BB7A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		D066BDB4109A82CA0091E15A /* TTResource Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "TTResource Tests.octest"; path = "build/Debug-iphonesimulator/TTResource Tests.octest"; sourceTree = "<group>"; };
+		D066BDB5109A82CA0091E15A /* TTResource Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TTResource Tests-Info.plist"; sourceTree = "<group>"; };
 		D0A6C54E1097446900FAA706 /* Three20.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20.xcodeproj; path = ../vendor/three20/src/Three20.xcodeproj; sourceTree = SOURCE_ROOT; };
 		D0A6C55C109744BD00FAA706 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		D0A6C5691097458900FAA706 /* TTResourceTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TTResourceTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0A6C56A1097458900FAA706 /* TTResourceTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TTResourceTests-Info.plist"; sourceTree = "<group>"; };
 		D0A6C5721097463200FAA706 /* NSObject+TTResourceTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+TTResourceTests.h"; sourceTree = "<group>"; };
 		D0A6C5731097463200FAA706 /* NSObject+TTResourceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+TTResourceTests.m"; sourceTree = "<group>"; };
@@ -205,7 +178,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		D0A6C5661097458900FAA706 /* Frameworks */ = {
+		D066BDB1109A82CA0091E15A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -229,7 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				D2AAC07E0554694100DB518D /* libTTResource.a */,
-				D0A6C5691097458900FAA706 /* TTResourceTests.octest */,
+				D066BDB4109A82CA0091E15A /* TTResource Tests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -246,6 +219,7 @@
 				D0A6C55C109744BD00FAA706 /* QuartzCore.framework */,
 				D0A6C56A1097458900FAA706 /* TTResourceTests-Info.plist */,
 				D042C557109A7F840002BB7A /* UIKit.framework */,
+				D066BDB5109A82CA0091E15A /* TTResource Tests-Info.plist */,
 			);
 			name = TTResource;
 			sourceTree = "<group>";
@@ -478,22 +452,22 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		D0A6C5681097458900FAA706 /* TTResourceTests */ = {
+		D066BDB3109A82CA0091E15A /* TTResource Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D0A6C56D1097458A00FAA706 /* Build configuration list for PBXNativeTarget "TTResourceTests" */;
+			buildConfigurationList = D066BDB8109A82CB0091E15A /* Build configuration list for PBXNativeTarget "TTResource Tests" */;
 			buildPhases = (
-				D0A6C5641097458900FAA706 /* Resources */,
-				D0A6C5651097458900FAA706 /* Sources */,
-				D0A6C5661097458900FAA706 /* Frameworks */,
-				D0A6C5671097458900FAA706 /* ShellScript */,
+				D066BDAF109A82CA0091E15A /* Resources */,
+				D066BDB0109A82CA0091E15A /* Sources */,
+				D066BDB1109A82CA0091E15A /* Frameworks */,
+				D066BDB2109A82CA0091E15A /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = TTResourceTests;
-			productName = TTResourceTests;
-			productReference = D0A6C5691097458900FAA706 /* TTResourceTests.octest */;
+			name = "TTResource Tests";
+			productName = "TTResource Tests";
+			productReference = D066BDB4109A82CA0091E15A /* TTResource Tests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
 		D2AAC07D0554694100DB518D /* TTResource */ = {
@@ -534,7 +508,7 @@
 			projectRoot = "";
 			targets = (
 				D2AAC07D0554694100DB518D /* TTResource */,
-				D0A6C5681097458900FAA706 /* TTResourceTests */,
+				D066BDB3109A82CA0091E15A /* TTResource Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -550,7 +524,7 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
-		D0A6C5641097458900FAA706 /* Resources */ = {
+		D066BDAF109A82CA0091E15A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -560,7 +534,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		D0A6C5671097458900FAA706 /* ShellScript */ = {
+		D066BDB2109A82CA0091E15A /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -576,39 +550,11 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		D0A6C5651097458900FAA706 /* Sources */ = {
+		D066BDB0109A82CA0091E15A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0A6C5741097463200FAA706 /* NSObject+TTResourceTests.m in Sources */,
-				D0DD201C10974B6C00BBB778 /* NSObject+SBJSON.m in Sources */,
-				D0DD201D10974B6C00BBB778 /* NSString+SBJSON.m in Sources */,
-				D0DD201E10974B6C00BBB778 /* SBJSON.m in Sources */,
-				D0DD201F10974B6C00BBB778 /* NSString+InflectionSupport.m in Sources */,
-				D0DD202010974B6C00BBB778 /* NSData+Additions.m in Sources */,
-				D0DD202110974B6C00BBB778 /* NSObject+PropertySupport.m in Sources */,
-				D0DD202210974B6C00BBB778 /* NSString+GSub.m in Sources */,
-				D0DD202310974B6C00BBB778 /* ObjectiveResourceDateFormatter.m in Sources */,
-				D0DD202410974B6C00BBB778 /* NSArray+JSONSerializableSupport.m in Sources */,
-				D0DD202510974B6C00BBB778 /* NSDictionary+JSONSerializableSupport.m in Sources */,
-				D0DD202610974B6C00BBB778 /* NSObject+JSONSerializableSupport.m in Sources */,
-				D0DD202710974B6C00BBB778 /* NSDate+Serialize.m in Sources */,
-				D0DD202810974B6C00BBB778 /* NSDictionary+KeyTranslation.m in Sources */,
-				D0DD202910974B6C00BBB778 /* NSObject+Serialize.m in Sources */,
-				D0DD202A10974B6C00BBB778 /* NSString+Serialize.m in Sources */,
-				D0DD202B10974B6C00BBB778 /* FromXMLElementDelegate.m in Sources */,
-				D0DD202C10974B6C00BBB778 /* NSArray+XMLSerializableSupport.m in Sources */,
-				D0DD202D10974B6C00BBB778 /* NSDate+XMLSerializableSupport.m in Sources */,
-				D0DD202E10974B6C00BBB778 /* NSDictionary+XMLSerializableSupport.m in Sources */,
-				D0DD202F10974B6C00BBB778 /* NSNull+XMLSerializableSupport.m in Sources */,
-				D0DD203010974B6C00BBB778 /* NSObject+XMLSerializableSupport.m in Sources */,
-				D0DD203110974B6C00BBB778 /* NSString+XMLSerializableSupport.m in Sources */,
-				D0DD203210974B6C00BBB778 /* NSNumber+XMLSerializableSupport.m in Sources */,
-				D0DD203310974B6C00BBB778 /* objective_supportAppDelegate.m in Sources */,
-				D0DD208A10974C3900BBB778 /* NSObject+TTResource.m in Sources */,
-				D0DD20EC109766D700BBB778 /* TTResourceConfig.m in Sources */,
-				D0E9285010976F1E00DF1436 /* TTResourceDispatcher.m in Sources */,
-				D0E9285510976F3C00DF1436 /* TTURLRequest+TTResource.m in Sources */,
+				D066BDB9109A83020091E15A /* NSObject+TTResourceTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -729,7 +675,7 @@
 			};
 			name = Release;
 		};
-		D0A6C56B1097458A00FAA706 /* Debug */ = {
+		D066BDB6109A82CB0091E15A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -742,7 +688,7 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				INFOPLIST_FILE = "TTResourceTests-Info.plist";
+				INFOPLIST_FILE = "TTResource Tests-Info.plist";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -752,12 +698,12 @@
 					UIKit,
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = TTResourceTests;
+				PRODUCT_NAME = "TTResource Tests";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
-		D0A6C56C1097458A00FAA706 /* Release */ = {
+		D066BDB7109A82CB0091E15A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -769,7 +715,7 @@
 				);
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				INFOPLIST_FILE = "TTResourceTests-Info.plist";
+				INFOPLIST_FILE = "TTResource Tests-Info.plist";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -779,7 +725,7 @@
 					UIKit,
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = TTResourceTests;
+				PRODUCT_NAME = "TTResource Tests";
 				WRAPPER_EXTENSION = octest;
 				ZERO_LINK = NO;
 			};
@@ -806,11 +752,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D0A6C56D1097458A00FAA706 /* Build configuration list for PBXNativeTarget "TTResourceTests" */ = {
+		D066BDB8109A82CB0091E15A /* Build configuration list for PBXNativeTarget "TTResource Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D0A6C56B1097458A00FAA706 /* Debug */,
-				D0A6C56C1097458A00FAA706 /* Release */,
+				D066BDB6109A82CB0091E15A /* Debug */,
+				D066BDB7109A82CB0091E15A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
