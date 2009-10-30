@@ -10,6 +10,7 @@
 
 #import "TTResourceDispatcher.h"
 #import "TTResourceConfig.h"
+#import "TTResourceDelegate.h"
 #import "Three20/Three20.h"
 #import "NSData+Additions.h"
 #import "NSObject+TTResource.h"
@@ -65,7 +66,7 @@
  * If the request is served from the cache, this is the only delegate method that will be called.
  */
 - (void)requestDidFinishLoad:(TTURLRequest*)request {  
-  NSObject<TTResourceDelegate> *delegate = [(TTUserInfo*)request.userInfo strong];
+  id<TTResourceDelegate> delegate = [(TTUserInfo*)request.userInfo strong];
   id receiver = [(TTUserInfo*)request.userInfo weak];
   NSData *body = [(TTURLDataResponse*)request.response data];
   
@@ -76,10 +77,11 @@
   }
   
   if([request.httpMethod isEqualToString:@"GET"]) { //Find    
-    //xxtodo - no way to tell here if they want one or all..
-    [receiver performSelector:[receiver getRemoteParseDataMethod]
-               withObject:body];
-    //xxtodo - call appropriate delegate method
+    
+    NSArray *results = [receiver performSelector:[receiver getRemoteParseDataMethod] 
+                                      withObject:body];
+    
+    [[delegate class] foundObjects:results forRequest:request];
     //xxtodo - Write a bunch of tests for this delegate call; the finder methods are class methods so we know the
     //          TTResourceDelegate is really a class.    
   } else if([request.httpMethod isEqualToString:@"POST"]) { //Create
@@ -87,16 +89,18 @@
                                     performSelector:[[receiver class] getRemoteParseDataMethod] 
                                     withObject:body] properties];
     [receiver setProperties:newProperties];
-    //xxtodo - call appropriate delegate method    
+
+    [delegate createdObject:receiver forRequest:request];
+    
   } else if([request.httpMethod isEqualToString:@"PUT"]) { //Update 
     if([(NSString *)[request.headers objectForKey:@"Content-Length"] intValue] > 1) {
       NSDictionary *newProperties = [[[receiver class] performSelector:[[receiver class] getRemoteParseDataMethod] 
                                                             withObject:body] properties];
-      [self setProperties:newProperties];
+      [receiver setProperties:newProperties];
     }    
-    //xxtodo - call appropriate delegate method    
+    [delegate updatedObject:receiver forRequest:request];
   } else if([request.httpMethod isEqualToString:@"DELETE"]) { //Destroy
-    //xxtodo - call appropriate delegate method    
+    [delegate destroyedObject:receiver forRequest:request];
   } else {
     //This shouldn't happen; xxtodo - raise exception
   }
