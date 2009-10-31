@@ -9,6 +9,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TTResource.h"
+#import "NSObject+TTResource.h"
 
 @interface TTResourceConfig : NSObject
 

@@ -7,13 +7,19 @@
 //
 
 #import "NSObject+TTResourceTests.h"
-
+#import "TTResource.h"
 
 @implementation NSObject_TTResourceTests
+
+- (void)setUp {
+  [TTResourceConfig setSite:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"RailsTestURL"]];
+}
 
 - (void)testTruth {
   STAssertTrue(TRUE,@"Truth should be true.");
 }
+
+
 
 
 

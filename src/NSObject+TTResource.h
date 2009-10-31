@@ -52,7 +52,10 @@ typedef enum {
 
 #pragma mark Remote Find methods
 + (TTURLRequest *)findAllRemote;
++ (TTURLRequest *)findAllRemoteWithDelegate:(id<TTResourceDelegate>)delegate;
 + (TTURLRequest *)findRemote:(NSString *)elementId;
++ (TTURLRequest *)findRemote:(NSString *)elementId delegate:(id<TTResourceDelegate>)delegate;
+//+ (TTURLRequest *)findNestedRemote:(NSString *)elementId ancestors:(id)firstAncestor... NS_REQUIRES_NIL_TERMINATION;
 
 #pragma mark -
 #pragma mark Instance methods
@@ -70,7 +73,7 @@ typedef enum {
 
 #pragma mark ID methods
 - (id)getRemoteId;
-- (void)setRemoteId:(id)orsId;
+- (void)setRemoteId:(id)remoteId;
 - (NSString *)getRemoteClassIdName;
 
 #pragma mark Instance helpers for getting at commonly used class-level values

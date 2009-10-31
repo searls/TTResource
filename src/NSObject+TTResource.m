@@ -155,21 +155,38 @@ static TTResponseFormat _format;
 
 // Find all items
 + (TTURLRequest *)findAllRemote {
+  return [[self class] findAllRemoteWithDelegate:[self useResourceDelegate]];
+}
+
++ (TTURLRequest *)findAllRemoteWithDelegate:(id<TTResourceDelegate>)delegate {
   return [TTResourceDispatcher get:[self getRemoteCollectionPath] 
                           withUser:[[self class] getRemoteUser] 
                        andPassword:[[self class]  getRemotePassword] 
                           receiver:self 
-                          delegate:[self useResourceDelegate]];
+                          delegate:delegate];
 }
 
 //Find one item
 + (TTURLRequest *)findRemote:(NSString *)elementId {
+  return [[self class] findRemote:elementId delegate:[self useResourceDelegate]];
+}
+
++ (TTURLRequest *)findRemote:(NSString *)elementId delegate:(id<TTResourceDelegate>)delegate {
 	return [TTResourceDispatcher get:[self getRemoteElementPath:elementId] 
                           withUser:[[self class] getRemoteUser] 
                        andPassword:[[self class]  getRemotePassword] 
                           receiver:self 
-                          delegate:[self useResourceDelegate]];
+                          delegate:delegate];
 }
+
+/*+ (TTURLRequest *)findNestedRemote:(NSString *)elementId ancestors:(id)firstAncestor... {
+  va_list args;
+  va_start(args, firstValue);
+  for (NSObject *arg = firstValue; arg != nil; arg = va_arg(args, NSObject*)) {
+    //xxtodo - build nested remote url
+  }
+  va_end(args);
+}*/
 
 #pragma mark -
 #pragma mark Instance methods
@@ -193,7 +210,7 @@ static TTResponseFormat _format;
 	else {
 		[[NSException exceptionWithName:@"ID Was Nil" reason:@"updateRemote sent, but object had no ID" 
                            userInfo:nil] raise];
-    return nil; //xxtodo - why is this necessary to avert a warning?
+    return nil; //xxtodo - why is this line necessary to avert a warning?
 	}
 }
 
@@ -257,10 +274,10 @@ static TTResponseFormat _format;
 	}
 	return result;
 }
-- (void)setRemoteId:(id)orsId {
+- (void)setRemoteId:(id)remoteId {
 	SEL setter = NSSelectorFromString([NSString stringWithFormat:@"set%@Id:",[self className]]);
 	if ([self respondsToSelector:setter]) {
-		[self performSelector:setter withObject:orsId];
+		[self performSelector:setter withObject:remoteId];
 	}
 }
 
@@ -321,13 +338,25 @@ static TTResponseFormat _format;
 #pragma mark TTResourceDelegate
 
 //xxtodo - provide a default implementation for this, at least TTLOG the results.
-+ (void)foundObjects:(NSArray*)objects forRequest:(TTURLRequest*)request{}
++ (void)foundObjects:(NSArray*)objects forRequest:(TTURLRequest*)request{
+  TTLOG(@"Found objects: %@",[objects description]);
+}
 
-- (void)createdObject:(id)object forRequest:(TTURLRequest*)request{}
-- (void)updatedObject:(id)object forRequest:(TTURLRequest*)request{}
-- (void)destroyedObject:(id)object forRequest:(TTURLRequest*)request{}
+- (void)createdObject:(id)object forRequest:(TTURLRequest*)request{
+  TTLOG(@"Created object: %@",[object description]);
+}
 
-- (void)requestFailed:(TTURLRequest*)request withError:(NSError*)error{}
+- (void)updatedObject:(id)object forRequest:(TTURLRequest*)request{
+  TTLOG(@"Updated object: %@",[object description]);
+}
+
+- (void)destroyedObject:(id)object forRequest:(TTURLRequest*)request{
+  TTLOG(@"Destroyed object: %@",[object description]);
+}
+
+- (void)requestFailed:(TTURLRequest*)request withError:(NSError*)error{
+  TTLOG(@"Request failed with error: %@",[error description]);
+}
 
 
 @end

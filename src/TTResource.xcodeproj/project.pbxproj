@@ -12,6 +12,20 @@
 		D066BDB9109A83020091E15A /* NSObject+TTResourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A6C5731097463200FAA706 /* NSObject+TTResourceTests.m */; };
 		D0A6C5591097448F00FAA706 /* libThree20.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D0A6C5561097446900FAA706 /* libThree20.a */; };
 		D0A6C55D109744BD00FAA706 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0A6C55C109744BD00FAA706 /* QuartzCore.framework */; };
+		D0B4725A109C9D3600133AC0 /* NSObject+TTResource.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DD208910974C3900BBB778 /* NSObject+TTResource.m */; };
+		D0B4725B109C9D3600133AC0 /* TTResourceConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DD20EB109766D700BBB778 /* TTResourceConfig.m */; };
+		D0B4725C109C9D3700133AC0 /* TTResourceDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E9284F10976F1E00DF1436 /* TTResourceDispatcher.m */; };
+		D0B472B5109CA03F00133AC0 /* libThree20.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D0A6C5561097446900FAA706 /* libThree20.a */; };
+		D0B472D2109CA12900133AC0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		D0B472D4109CA12900133AC0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D042C557109A7F840002BB7A /* UIKit.framework */; };
+		D0B472D6109CA13C00133AC0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0B472D5109CA13C00133AC0 /* CoreGraphics.framework */; };
+		D0B472F8109CA47700133AC0 /* Person.h in Headers */ = {isa = PBXBuildFile; fileRef = D0B472F4109CA47700133AC0 /* Person.h */; };
+		D0B472F9109CA47700133AC0 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B472F5109CA47700133AC0 /* Person.m */; };
+		D0B472FA109CA47700133AC0 /* Dog.h in Headers */ = {isa = PBXBuildFile; fileRef = D0B472F6109CA47700133AC0 /* Dog.h */; };
+		D0B472FB109CA47700133AC0 /* Dog.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B472F7109CA47700133AC0 /* Dog.m */; };
+		D0B472FC109CA47F00133AC0 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B472F5109CA47700133AC0 /* Person.m */; };
+		D0B472FD109CA48300133AC0 /* Dog.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B472F7109CA47700133AC0 /* Dog.m */; };
+		D0B47342109CED0800133AC0 /* PersonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B47341109CED0800133AC0 /* PersonTests.m */; };
 		D0DD203410974B6C00BBB778 /* JSONFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = D0DD1FDF10974B6C00BBB778 /* JSONFramework.h */; };
 		D0DD203510974B6C00BBB778 /* NSObject+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D0DD1FE010974B6C00BBB778 /* NSObject+SBJSON.h */; };
 		D0DD203610974B6C00BBB778 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DD1FE110974B6C00BBB778 /* NSObject+SBJSON.m */; };
@@ -76,8 +90,6 @@
 		D0DD20EE109766D700BBB778 /* TTResourceConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DD20EB109766D700BBB778 /* TTResourceConfig.m */; };
 		D0E9285110976F1E00DF1436 /* TTResourceDispatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E9284E10976F1E00DF1436 /* TTResourceDispatcher.h */; };
 		D0E9285210976F1E00DF1436 /* TTResourceDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E9284F10976F1E00DF1436 /* TTResourceDispatcher.m */; };
-		D0E9285610976F3C00DF1436 /* TTURLRequest+TTResource.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E9285310976F3C00DF1436 /* TTURLRequest+TTResource.h */; };
-		D0E9285710976F3C00DF1436 /* TTURLRequest+TTResource.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E9285410976F3C00DF1436 /* TTURLRequest+TTResource.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,19 +107,40 @@
 			remoteGlobalIDString = BEF31F390F352DF5000DE5D2;
 			remoteInfo = Three20;
 		};
+		D0B47295109C9E2A00133AC0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D /* TTResource */;
+			remoteInfo = TTResource;
+		};
+		D0B472D9109CA14400133AC0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D0A6C54E1097446900FAA706 /* Three20.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BEF31F390F352DF5000DE5D2 /* Three20 */;
+			remoteInfo = Three20;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		AA747D9E0F9514B9006C5449 /* TTResource_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTResource_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D042C557109A7F840002BB7A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		D066BDB4109A82CA0091E15A /* TTResource Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "TTResource Tests.octest"; path = "build/Debug-iphonesimulator/TTResource Tests.octest"; sourceTree = "<group>"; };
+		D066BDB4109A82CA0091E15A /* TTResource Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TTResource Tests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D066BDB5109A82CA0091E15A /* TTResource Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TTResource Tests-Info.plist"; sourceTree = "<group>"; };
 		D0A6C54E1097446900FAA706 /* Three20.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20.xcodeproj; path = ../vendor/three20/src/Three20.xcodeproj; sourceTree = SOURCE_ROOT; };
 		D0A6C55C109744BD00FAA706 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D0A6C56A1097458900FAA706 /* TTResourceTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TTResourceTests-Info.plist"; sourceTree = "<group>"; };
 		D0A6C5721097463200FAA706 /* NSObject+TTResourceTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+TTResourceTests.h"; sourceTree = "<group>"; };
 		D0A6C5731097463200FAA706 /* NSObject+TTResourceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+TTResourceTests.m"; sourceTree = "<group>"; };
+		D0B472D5109CA13C00133AC0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		D0B472F4109CA47700133AC0 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
+		D0B472F5109CA47700133AC0 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
+		D0B472F6109CA47700133AC0 /* Dog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dog.h; sourceTree = "<group>"; };
+		D0B472F7109CA47700133AC0 /* Dog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dog.m; sourceTree = "<group>"; };
+		D0B47340109CED0800133AC0 /* PersonTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonTests.h; sourceTree = "<group>"; };
+		D0B47341109CED0800133AC0 /* PersonTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonTests.m; sourceTree = "<group>"; };
 		D0DD1FDF10974B6C00BBB778 /* JSONFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONFramework.h; path = "../vendor/objectivesupport/Classes/lib/json-framework/JSONFramework.h"; sourceTree = SOURCE_ROOT; };
 		D0DD1FE010974B6C00BBB778 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+SBJSON.h"; path = "../vendor/objectivesupport/Classes/lib/json-framework/NSObject+SBJSON.h"; sourceTree = SOURCE_ROOT; };
 		D0DD1FE110974B6C00BBB778 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+SBJSON.m"; path = "../vendor/objectivesupport/Classes/lib/json-framework/NSObject+SBJSON.m"; sourceTree = SOURCE_ROOT; };
@@ -172,8 +205,6 @@
 		D0DD20EB109766D700BBB778 /* TTResourceConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTResourceConfig.m; sourceTree = "<group>"; };
 		D0E9284E10976F1E00DF1436 /* TTResourceDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTResourceDispatcher.h; sourceTree = "<group>"; };
 		D0E9284F10976F1E00DF1436 /* TTResourceDispatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTResourceDispatcher.m; sourceTree = "<group>"; };
-		D0E9285310976F3C00DF1436 /* TTURLRequest+TTResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TTURLRequest+TTResource.h"; sourceTree = "<group>"; };
-		D0E9285410976F3C00DF1436 /* TTURLRequest+TTResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TTURLRequest+TTResource.m"; sourceTree = "<group>"; };
 		D2AAC07E0554694100DB518D /* libTTResource.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTTResource.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -182,6 +213,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0B472B5109CA03F00133AC0 /* libThree20.a in Frameworks */,
+				D0B472D2109CA12900133AC0 /* Foundation.framework in Frameworks */,
+				D0B472D4109CA12900133AC0 /* UIKit.framework in Frameworks */,
+				D0B472D6109CA13C00133AC0 /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,6 +255,7 @@
 				D0A6C56A1097458900FAA706 /* TTResourceTests-Info.plist */,
 				D042C557109A7F840002BB7A /* UIKit.framework */,
 				D066BDB5109A82CA0091E15A /* TTResource Tests-Info.plist */,
+				D0B472D5109CA13C00133AC0 /* CoreGraphics.framework */,
 			);
 			name = TTResource;
 			sourceTree = "<group>";
@@ -243,8 +279,6 @@
 				D0DD208910974C3900BBB778 /* NSObject+TTResource.m */,
 				D0E9284E10976F1E00DF1436 /* TTResourceDispatcher.h */,
 				D0E9284F10976F1E00DF1436 /* TTResourceDispatcher.m */,
-				D0E9285310976F3C00DF1436 /* TTURLRequest+TTResource.h */,
-				D0E9285410976F3C00DF1436 /* TTURLRequest+TTResource.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -268,10 +302,24 @@
 		D0A6C56F109745A200FAA706 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				D0B472E5109CA45300133AC0 /* Test Entities */,
 				D0A6C5721097463200FAA706 /* NSObject+TTResourceTests.h */,
 				D0A6C5731097463200FAA706 /* NSObject+TTResourceTests.m */,
+				D0B47340109CED0800133AC0 /* PersonTests.h */,
+				D0B47341109CED0800133AC0 /* PersonTests.m */,
 			);
 			name = Tests;
+			sourceTree = "<group>";
+		};
+		D0B472E5109CA45300133AC0 /* Test Entities */ = {
+			isa = PBXGroup;
+			children = (
+				D0B472F4109CA47700133AC0 /* Person.h */,
+				D0B472F5109CA47700133AC0 /* Person.m */,
+				D0B472F6109CA47700133AC0 /* Dog.h */,
+				D0B472F7109CA47700133AC0 /* Dog.m */,
+			);
+			name = "Test Entities";
 			sourceTree = "<group>";
 		};
 		D0DD1FD310974B5200BBB778 /* vendor */ = {
@@ -445,7 +493,8 @@
 				D0DD20E61097666300BBB778 /* TTResource.h in Headers */,
 				D0DD20ED109766D700BBB778 /* TTResourceConfig.h in Headers */,
 				D0E9285110976F1E00DF1436 /* TTResourceDispatcher.h in Headers */,
-				D0E9285610976F3C00DF1436 /* TTURLRequest+TTResource.h in Headers */,
+				D0B472F8109CA47700133AC0 /* Person.h in Headers */,
+				D0B472FA109CA47700133AC0 /* Dog.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,6 +513,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				D0B47296109C9E2A00133AC0 /* PBXTargetDependency */,
+				D0B472DA109CA14400133AC0 /* PBXTargetDependency */,
 			);
 			name = "TTResource Tests";
 			productName = "TTResource Tests";
@@ -555,6 +606,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D066BDB9109A83020091E15A /* NSObject+TTResourceTests.m in Sources */,
+				D0B4725A109C9D3600133AC0 /* NSObject+TTResource.m in Sources */,
+				D0B4725B109C9D3600133AC0 /* TTResourceConfig.m in Sources */,
+				D0B4725C109C9D3700133AC0 /* TTResourceDispatcher.m in Sources */,
+				D0B472FC109CA47F00133AC0 /* Person.m in Sources */,
+				D0B472FD109CA48300133AC0 /* Dog.m in Sources */,
+				D0B47342109CED0800133AC0 /* PersonTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -589,7 +646,8 @@
 				D0DD208C10974C3900BBB778 /* NSObject+TTResource.m in Sources */,
 				D0DD20EE109766D700BBB778 /* TTResourceConfig.m in Sources */,
 				D0E9285210976F1E00DF1436 /* TTResourceDispatcher.m in Sources */,
-				D0E9285710976F3C00DF1436 /* TTURLRequest+TTResource.m in Sources */,
+				D0B472F9109CA47700133AC0 /* Person.m in Sources */,
+				D0B472FB109CA47700133AC0 /* Dog.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -600,6 +658,16 @@
 			isa = PBXTargetDependency;
 			name = Three20;
 			targetProxy = D0A6C560109744BF00FAA706 /* PBXContainerItemProxy */;
+		};
+		D0B47296109C9E2A00133AC0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2AAC07D0554694100DB518D /* TTResource */;
+			targetProxy = D0B47295109C9E2A00133AC0 /* PBXContainerItemProxy */;
+		};
+		D0B472DA109CA14400133AC0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Three20;
+			targetProxy = D0B472D9109CA14400133AC0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -655,7 +723,10 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = ../vendor/three20/src;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PREBINDING = NO;
 				SDKROOT = iphoneos3.1.2;
 			};
@@ -669,7 +740,10 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = ../vendor/three20/src;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PREBINDING = NO;
 				SDKROOT = iphoneos3.1.2;
 			};
