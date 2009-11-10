@@ -16,8 +16,8 @@
 
 // Response Formats
 typedef enum {
-	XmlResponse = 0, //xxtodo once initially ported, change to TTResponseFormatXML
-	JSONResponse, //and this to TTResponseFormatJSON
+	TTResponseFormatXML = 0,
+	TTResponseFormatJSON,
 } TTResponseFormat;
 
 #pragma mark -

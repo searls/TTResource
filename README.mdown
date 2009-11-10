@@ -29,21 +29,29 @@ Last, another note: since TTResource itself borrows code directly from Objective
 Adding TTResource to your project
 ---------------------------------
 
-**Note: TTResource is pre-pre-pre-Alpha. It does not work. Do not add TTResource to your existing applications just yet.**
+**Note: TTResource is pre-pre-pre-Alpha. It does not yet work. Do not add TTResource to your existing applications unless you plan to pitch in and contribute.**
+
+**Note #2: Please pitch in and contribute!**
 
 1. Clone the TTResource repository to a permanent location on your hard drive:
 <pre>
     $ git clone git://github.com/searls/TTResource.git
 </pre>
-2. Find `TTResource.xcodeproj` in Finder, then drag-and-drop it into your project's "Groups & Files" pane in Xcode underneath your Project.
+2. TTResource depends on three20 and ObjectiveSupport, so immediately after cloning, you will need to:
+<pre>
+	$ cd TTResource
+	$ git submodule init
+	$ git submodule update
+</pre>
+3. Find `TTResource.xcodeproj` in Finder, then drag-and-drop it into your project's "Groups & Files" pane in Xcode underneath your Project.
 	* Uncheck "Copy items"
 	* Set "Reference Type" to "Relative to Project"
 	* Check "Recursively create groups for any added folders"	
-3. Click "TTResource.xcodeproj" in your "Groups & Files" pane, and in the upper right, you should see a file named "libTTResource.a". Check the checkbox to the far right with a bullseye above it.
-4. Set up the project's dependencies.
+4. Click "TTResource.xcodeproj" in your "Groups & Files" pane, and in the upper right, you should see a file named "libTTResource.a". Check the checkbox to the far right with a bullseye above it.
+5. Set up the project's dependencies.
 	1. From the menu bar, select "Project" -> "Edit Project Settings" and click the "General" tab.
 	2. Click the `+` icon under "Direct Dependencies" and add `TTResource`.
-5. Set up the project settings
+6. Set up the project settings
 	1. From the menu bar, select "Project" -> "Edit Project Settings" and click the "Build" tab. 
 	2. Set Configuration to `All Configurations` 
 	3. Under "Other Linker Flags" add both: `-all_load` and `-ObjC`

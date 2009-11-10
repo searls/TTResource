@@ -8,7 +8,7 @@
 
 #import <Three20/Three20.h>
 
-@protocol TTResourceDelegate<NSObject>
+@protocol TTResourceDelegate
 
 @optional
 

@@ -23,7 +23,7 @@ static SEL _activeResourceSerializeMethod = nil;
 static NSString *_activeResourceProtocolExtension = @".xml";
 static TTResponseFormat _format;
 
-@implementation NSObject (ObjectiveResource)
+@implementation NSObject (TTResource)
 
 #pragma mark -
 #pragma mark Class Methods
@@ -65,7 +65,7 @@ static TTResponseFormat _format;
 + (void)setRemoteResponseType:(TTResponseFormat) format {
 	_format = format;
 	switch (format) {
-		case JSONResponse:
+		case TTResponseFormatJSON:
 			[[self class] setRemoteProtocolExtension:@".json"];
 			[[self class] setRemoteParseDataMethod:@selector(fromJSONData:)];
 			[[self class] setRemoteSerializeMethod:@selector(toJSONExcluding:)];

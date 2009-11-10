@@ -66,7 +66,7 @@
  * If the request is served from the cache, this is the only delegate method that will be called.
  */
 - (void)requestDidFinishLoad:(TTURLRequest*)request {  
-  id<TTResourceDelegate> delegate = [(TTUserInfo*)request.userInfo strong];
+  NSObject<TTResourceDelegate> *delegate = [(TTUserInfo*)request.userInfo strong];
   id receiver = [(TTUserInfo*)request.userInfo weak];
   NSData *body = [(TTURLDataResponse*)request.response data];
   
@@ -126,16 +126,19 @@
 	}
   
   //2. Set MIME type for Content-Type and Accept headers
+
   switch ([TTResourceConfig getResponseType]) {
-		case JSONResponse:
-      [request.headers setObject:@"application/json" forKey:@"Content-Type"];	
-      [request.headers setObject:@"application/json" forKey:@"Accept"];	      
+		case TTResponseFormatJSON:
+      request.contentType = @"application/json";
+      [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];      
 			break;
 		default:
-      [request.headers setObject:@"application/xml" forKey:@"Content-Type"];	
-      [request.headers setObject:@"application/xml" forKey:@"Accept"];	      
-			break;
+      request.contentType = @"application/xml";
+      [request setValue:@"application/xml" forHTTPHeaderField:@"Accept"];   
+      break;
 	}
+  
+  request.shouldHandleCookies = YES;
   
   //2. Create a Data Response Object
   request.response = [[[TTURLDataResponse alloc] init] autorelease];  

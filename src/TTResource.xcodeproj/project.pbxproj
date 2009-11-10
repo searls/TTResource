@@ -111,14 +111,14 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D /* TTResource */;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = TTResource;
 		};
 		D0B472D9109CA14400133AC0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D0A6C54E1097446900FAA706 /* Three20.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = BEF31F390F352DF5000DE5D2 /* Three20 */;
+			remoteGlobalIDString = BEF31F390F352DF5000DE5D2;
 			remoteInfo = Three20;
 		};
 /* End PBXContainerItemProxy section */

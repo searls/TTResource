@@ -14,5 +14,6 @@
 }
 
 - (void) testTruth;
+- (void)testCreate;
 
 @end

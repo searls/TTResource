@@ -19,6 +19,13 @@
   STAssertTrue(TRUE,@"Truth should be true.");
 }
 
+- (void)testCreate {
+/*  [TTResourceConfig setSite:@"http://localhost:3000/"];
+  [TTResourceConfig setResponseType:TTResponseFormatXML];
+  Person *bob = [[[Person alloc] init] autorelease];
+  bob.name = @"Bob";
+  [bob createRemote];*/  
+}
 
 
 

@@ -1,6 +1,13 @@
 #Ignore Xcode builds
+.DS_Store
 src/build
 *.pbxuser
 *.mode1v3
 *.perspectivev3
-.DS_Store
+#TTResourceSample ignore
+sample/TTResourceSample/build
+#Rails ignore
+remote/ttresource/db/*.sqlite3
+remote/ttresource/log/*
+#Misc. ignore
+vendor/three20.justin
