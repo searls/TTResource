@@ -59,4 +59,12 @@ Adding TTResource to your project
 
 Usage Example
 -------------
-**TODO**
+Included in the git repository is a (very) simple Ruby on Rails application and a (very) simple TTResource project called TTResourceSample. To use the sample project and back it with the sample Rails app, you'll need to first start the Rails server:
+1. First install Ruby and Rails, something most users of this library are probably familiar with.
+2. Start the server:
+<pre>
+	$ cd remote/ttresource
+	$ script/server
+</pre>
+3. Next, open `sample/TTResourceSample/TTResourceSample.xcodeproj` in Xcode.
+4. Observe the meager code in `TTResourceSampleAppDelegate.m` and try a Build & Run, then monitor the results.

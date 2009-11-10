@@ -27,7 +27,12 @@
   Person *bob = [[[Person alloc] init] autorelease];
   bob.name = @"Bob";
   [bob createRemote];
-  
+  /*xxtodo - Creates Bob in the remote, but still thinks HTTP 201 is an error:
+   
+   TTResourceSample[3628:207] ERROR: Error Domain=NSURLErrorDomain Code=201 
+   "Operation could not be completed. (NSURLErrorDomain error 201.)"
+   
+   */
   
   
   
