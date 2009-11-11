@@ -19,23 +19,33 @@
   // Override point for customization after application launch
   [window makeKeyAndVisible];
   
-  
-  
-  //Create Bob
   [TTResourceConfig setSite:@"http://localhost:3000/"];
   [TTResourceConfig setResponseType:TTResponseFormatXML];
+  
+  //Find all the bobs
+  //xxtodo
+  
+  //Delete all the Bobs
+  //xxtodo
+  
+  
+  
+  //Create a Bob
   Person *bob = [[[Person alloc] init] autorelease];
   bob.name = @"Bob";
-  [bob createRemote];
-  /*xxtodo - Creates Bob in the remote, but still thinks HTTP 201 is an error:
-   
-   TTResourceSample[3628:207] ERROR: Error Domain=NSURLErrorDomain Code=201 
-   "Operation could not be completed. (NSURLErrorDomain error 201.)"
-   
-   */
+  [bob createRemote];  
+  
+  //Find that bob
+  //xxtodo
+  
+  //Update a Bob
+  //xxtodo
+  
+  //Destroy my bob
+  //xxtodo
   
   
-  
+  NSLog(@"Finn.");
 }
 
 
