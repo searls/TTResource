@@ -1,6 +1,6 @@
 [submodule "vendor/three20"]
 	path = vendor/three20
-	url = git://github.com/joehewitt/three20.git
+	url = git://github.com/searls/three20.git
 [submodule "vendor/objectivesupport"]
 	path = vendor/objectivesupport
 	url = git://github.com/yfactorial/objectivesupport.git

@@ -108,6 +108,7 @@
 
 - (void)request:(TTURLRequest*)request didFailLoadWithError:(NSError*)error {
   //xxtodo call failure delegate method (include action type in failure?)
+  NSLog(@"%@",[error localizedDescription]);
 }
 
 
@@ -130,11 +131,11 @@
   switch ([TTResourceConfig getResponseType]) {
 		case TTResponseFormatJSON:
       request.contentType = @"application/json";
-      [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];      
+//      [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];      
 			break;
 		default:
       request.contentType = @"application/xml";
-      [request setValue:@"application/xml" forHTTPHeaderField:@"Accept"];   
+//      [request setValue:@"application/xml" forHTTPHeaderField:@"Accept"];   
       break;
 	}
   
