@@ -18,8 +18,8 @@
 
 @interface TTResourceDispatcher()
 
-+ (void)sendRequest:(TTURLRequest *)request withUser:(NSString *)user andPassword:(NSString *)password;
-+ (TTURLRequest *)sendBy:(NSString *)method withBody:(NSString *)body to:(NSString *)url 
+- (void)sendRequest:(TTURLRequest *)request withUser:(NSString *)user andPassword:(NSString *)password;
+- (TTURLRequest *)sendBy:(NSString *)method withBody:(NSString *)body to:(NSString *)url 
                 withUser:(NSString *)user andPassword:(NSString *)password receiver:(id)receiver 
                 delegate:(id<TTResourceDelegate>)delegate;
 
@@ -33,16 +33,20 @@
 #pragma mark -
 #pragma mark Public Methods
 
++ (id)dispatcher {
+    return [[[self alloc] init] autorelease];
+}
+
 + (TTURLRequest *)post:(NSString *)body to:(NSString *)url receiver:(id)receiver delegate:(id<TTResourceDelegate>)delegate{
 	return [self post:body to:url withUser:nil andPassword:nil receiver:receiver delegate:delegate];
 }
 
 + (TTURLRequest *)post:(NSString *)body to:(NSString *)url withUser:(NSString *)user andPassword:(NSString *)password receiver:(id)receiver delegate:(id<TTResourceDelegate>)delegate{
-	return [self sendBy:@"POST" withBody:body to:url withUser:user andPassword:password receiver:receiver delegate:delegate];
+	return [[TTResourceDispatcher dispatcher] sendBy:@"POST" withBody:body to:url withUser:user andPassword:password receiver:receiver delegate:delegate];
 }
 
 + (TTURLRequest *)put:(NSString *)body to:(NSString *)url withUser:(NSString *)user andPassword:(NSString *)password receiver:(id)receiver delegate:(id<TTResourceDelegate>)delegate{
-	return [self sendBy:@"PUT" withBody:body to:url withUser:user andPassword:password receiver:receiver delegate:delegate];
+	return [[TTResourceDispatcher dispatcher] sendBy:@"PUT" withBody:body to:url withUser:user andPassword:password receiver:receiver delegate:delegate];
 }
 
 + (TTURLRequest *)get:(NSString *)url receiver:(id)receiver delegate:(id<TTResourceDelegate>)delegate{
@@ -50,11 +54,11 @@
 }
 
 + (TTURLRequest *)get:(NSString *)url withUser:(NSString *)user andPassword:(NSString *)password receiver:(id)receiver delegate:(id<TTResourceDelegate>)delegate{
-  return [self sendBy:@"GET" withBody:nil to:url withUser:user andPassword:password receiver:receiver delegate:delegate];
+  return [[TTResourceDispatcher dispatcher] sendBy:@"GET" withBody:nil to:url withUser:user andPassword:password receiver:receiver delegate:delegate];
 }
 
 + (TTURLRequest *)delete:(NSString *)url withUser:(NSString *)user andPassword:(NSString *)password receiver:(id)receiver delegate:(id<TTResourceDelegate>)delegate{
-  return [self sendBy:@"DELETE" withBody:nil to:url withUser:user andPassword:password receiver:receiver delegate:delegate];
+  return [[TTResourceDispatcher dispatcher] sendBy:@"DELETE" withBody:nil to:url withUser:user andPassword:password receiver:receiver delegate:delegate];
 }
 
 #pragma mark -
@@ -116,7 +120,7 @@
 #pragma mark -
 #pragma mark Private methods
 
-+ (void)sendRequest:(TTURLRequest *)request withUser:(NSString *)user andPassword:(NSString *)password {
+- (void)sendRequest:(TTURLRequest *)request withUser:(NSString *)user andPassword:(NSString *)password {
 	
   //1. Hammer out the URL and header if Basic HTTP Authentication needs to be added
 	if(user && password) {
@@ -150,7 +154,7 @@
 }
 
 
-+ (TTURLRequest *)sendBy:(NSString *)method withBody:(NSString *)body to:(NSString *)url 
+- (TTURLRequest *)sendBy:(NSString *)method withBody:(NSString *)body to:(NSString *)url 
                 withUser:(NSString *)user andPassword:(NSString *)password 
                 receiver:(id)receiver 
                 delegate:(id<TTResourceDelegate>)delegate{
@@ -160,11 +164,11 @@
     request.httpBody = [body dataUsingEncoding:NSUTF8StringEncoding];
   }
   
+  request.userInfo = [TTUserInfo topic:method strong:delegate weak:receiver];
+
   [self sendRequest:request withUser:user andPassword:password];
   
-  request.userInfo = [TTUserInfo topic:method strong:delegate weak:receiver];
-  
-	return request;
+  return request;
 }
 
 + (NSString*)urlContainingAuthString:(NSString*)authString forUrl:(NSString*)url {  

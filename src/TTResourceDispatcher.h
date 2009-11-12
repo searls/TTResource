@@ -17,6 +17,8 @@
 
 @interface TTResourceDispatcher : NSObject <TTURLRequestDelegate> 
 
++ (id)dispatcher;
+
 + (TTURLRequest*) post:(NSString *)body to:(NSString *)url receiver:(id)receiver delegate:(id<TTResourceDelegate>)delegate;
 + (TTURLRequest*) post:(NSString *)body to:(NSString *)url withUser:(NSString *)user andPassword:(NSString *)password receiver:(id)receiver delegate:(id<TTResourceDelegate>)delegate;
 
